@@ -1,15 +1,21 @@
+import sys
 import pygame
 from buildingTool.imageLoading import imageLoading
+from buildingTool.gameCirculation import gameCirculation
 
 
 class Game():
     def __init__(self):
         filename = './image/sky.jpg'
         pygame.init()
+        pygame.display.set_caption("蛙蛙勇闯地牢")
         screen = pygame.display.set_mode((800,800))
         imageLoading(screen,filename,(0,0))
 
-        pygame.quit()
+        while True:
+            # 游戏内部循环中的事件处理
+            gameCirculation(self)
+            pygame.display.update()
 
 if __name__ == "__main__":
     game = Game()
