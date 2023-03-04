@@ -24,3 +24,12 @@ def backgroundBuilding(game):
         bg_current_frame += FPS_BG
         fire_current_frame += FPS_FIRE
         pygame.display.update()
+
+def characterBuilding(game):
+    character_img_list = game.characterInit
+    FPS = decimal.Decimal('0.004')
+    character_frame = decimal.Decimal('0')
+    while (character_frame < len(character_img_list)):
+        game.screen.blit(character_img_list[int(character_frame)],(300,100))
+        character_frame += FPS
+        pygame.display.update()
