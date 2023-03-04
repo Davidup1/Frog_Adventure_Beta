@@ -1,20 +1,23 @@
 import sys
+from PIL import Image
+import os
 import pygame
-from buildingTool.backgroundBuilding import backgroundBuilding
+from buildingTool.gifBuilding import backgroundBuilding
 from buildingTool.imageLoading import imageLoading
 from buildingTool.gameCirculation import gameCirculation
 
 
 class Game():
     def __init__(self):
-        bg_filename = [['./image/bg/bg_f1.png',[0,0]],['./image/bg/bg_f2.png',[0,0]]]
-        fire_filename = [['./image/bg/bg_fire_f1.png',[0,0]],['./image/bg/bg_fire_f2.png',[0,0]],\
-                         ['./image/bg/bg_fire_f3.png',[0,0]],['./image/bg/bg_fire_f4.png',[0,0]]]
+        self.backgroundPath = './image/bg'
+        backgroundFile = self.loadFile(self.backgroundPath)
+        bg_filename = backgroundFile[:2]
+        fire_filename = backgroundFile[2:]
         pygame.init()
         self.clock = pygame.time.Clock()
         pygame.display.set_caption("蛙蛙勇闯地牢")
         self.screen = pygame.display.set_mode((960, 539))
-        self.imageInit = imageLoading(bg_filename)
+        self.bgImageInit = imageLoading(bg_filename)
         self.fireInit = imageLoading(fire_filename)
 
         while True:
@@ -23,6 +26,14 @@ class Game():
             gameCirculation(self)
             pygame.display.update()
 
+
+    def loadFile(self,path):
+        images = []
+        for filename in os.listdir(path):
+            if filename.endswith(".png"):
+                filename = "./image/bg/" + filename
+                images.append(filename)
+        return images
 
 if __name__ == "__main__":
     game = Game()

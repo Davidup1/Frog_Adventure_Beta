@@ -3,7 +3,7 @@ import decimal
 
 
 def backgroundBuilding(game):
-    bgImage_list = game.imageInit
+    bgImage_list = game.bgImageInit
     fireImage_list = game.fireInit
     bg_current_frame = decimal.Decimal('0')
     fire_current_frame = decimal.Decimal('0')

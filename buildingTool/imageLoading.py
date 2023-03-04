@@ -4,8 +4,7 @@ import pygame
 def imageLoading(filename):
     imageInit = []
     for file in filename:
-        print(file[0],file[1])
-        img = pygame.image.load(file[0])
+        img = pygame.image.load(file)
         imageInit.append(img)
 
     return imageInit
