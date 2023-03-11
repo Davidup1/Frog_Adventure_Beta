@@ -1,0 +1,19 @@
+{
+  "character": {
+    "frog": {
+      "HP": 20,
+      "pos_x": 106,
+      "pos_y": 179
+    },
+    "fly_normal": {
+      "HP": 6,
+      "pos_x": 704,
+      "pos_y": 179
+    },
+    "moth_normal": {
+      "HP": 12,
+      "pos_x": 704,
+      "pos_y": 179
+    }
+  }
+}

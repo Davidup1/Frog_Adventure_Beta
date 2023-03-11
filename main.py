@@ -3,10 +3,10 @@ from PIL import Image
 import os
 import pygame
 from buildingTool.fps import show_fps
-from buildingTool.gameImageInit import game_image_init
+from buildingTool.gameInit import game_init
 from buildingTool.imageRendering import image_rendering
 from buildingTool.gameCirculation import game_circulation
-
+from buildingTool.gameCirculation import level_init
 
 class Game:
     def __init__(self):
@@ -14,13 +14,14 @@ class Game:
         pygame.display.set_icon(pygame.image.load('./game_icon.png'))
         pygame.display.set_caption("蛙蛙勇闯地牢")
         self.clock = pygame.time.Clock()
-        self.screen = pygame.display.set_mode((960, 539), pygame.RESIZABLE)
-        # print(self.screen.get_size())
+        self.screen = pygame.display.set_mode((960, 539))
 
         self.font = pygame.font.Font('./font/DinkieBitmap-7pxDemo.ttf', 21)
         self.game_frame_cnt = 0
+        self.cur_level = 1
 
-        game_image_init(self)
+        game_init(self)
+        level_init(self)
 
         while True:
             self.clock.tick(60)

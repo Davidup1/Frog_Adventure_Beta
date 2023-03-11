@@ -1,0 +1,10 @@
+{
+  "0": {
+    "monsters": ["fly_normal", "moth_normal"],
+    "monster_max": 2
+  },
+  "1": {
+    "monsters": "fly_normal",
+    "monster_max": 3
+  }
+}
