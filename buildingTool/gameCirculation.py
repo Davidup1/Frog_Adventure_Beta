@@ -28,5 +28,6 @@ def level_init(game):
             if random_num <= weight:
                 break
         game.monsters.append(game.characters[level_data['monsters'][i]].copy(index+1, level_pos[monster_num-1][index]))
-        print("name:%s index:%d pos:(%d,%d)" % (game.monsters[index].name, game.monsters[index].index, game.monsters[index].x, game.monsters[index].y))
+        mob = game.monsters[index]
+        print("name:%s index:%d pos:(%d,%d)" % (mob.name, mob.index, mob.x, mob.y))
 
