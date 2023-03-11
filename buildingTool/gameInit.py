@@ -30,7 +30,7 @@ def character_init(data, img):
     for characterName in img:
         characters[characterName] = Character(
             characterName,
-            GifBuilder(img[characterName], 6),
+            GifBuilder(img[characterName], data[characterName]['wait']),
             data[characterName]['HP'],
             data[characterName]['pos_x'],
             data[characterName]['pos_y']

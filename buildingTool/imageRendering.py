@@ -1,8 +1,10 @@
+from buildingTool.info import show_info
 
 
 def image_rendering(game):
     background_rendering(game)
     character_rendering(game)
+    show_info(game)
 
 
 def background_rendering(game):
@@ -13,6 +15,6 @@ def background_rendering(game):
 def character_rendering(game):
     game.screen.blit(game.player.gif.gif(), (game.player.x, game.player.y))
     for monster in game.monsters:
-        pass
+        game.screen.blit(monster.gif.gif(), (monster.x, monster.y))
 
 

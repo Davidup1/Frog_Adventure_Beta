@@ -4,11 +4,12 @@ class GifBuilder:
     def __init__(self, frames, wait_time=1):
         self.frameList = []
         for i in frames:
-            self.frameList.append(frames[i])
+            self.frameList.append(frames[i] if type(i)==type('') else i)
         self.maxFrame = len(self.frameList)-1
         self.curFrame = 0
         self.wait = wait_time-1
         self.cnt = 0
+        self.size = self.frameList[0].get_size()
 
     def gif(self):
         if self.cnt == self.wait:
@@ -17,5 +18,8 @@ class GifBuilder:
         else:
             self.cnt += 1
         return self.frameList[self.curFrame]
+
+    def copy(self):
+        return GifBuilder(self.frameList, self.wait)
 
 

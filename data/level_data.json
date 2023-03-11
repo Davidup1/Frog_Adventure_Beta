@@ -1,10 +1,19 @@
 {
-  "0": {
-    "monsters": ["fly_normal", "moth_normal"],
-    "monster_max": 2
+  "level_stage": {
+    "0": {
+      "monsters": ["fly_normal", "moth_normal"],
+      "monster_weight": [2, 0],
+      "monster_max": 2
+    },
+    "1": {
+      "monsters": "fly_normal",
+      "monster_max": 3
+    }
   },
-  "1": {
-    "monsters": "fly_normal",
-    "monster_max": 3
-  }
+  "level_pos": [
+    [704,179],
+    [[698,143],[670,289]],
+    [[698,143],[553,189],[670,289]],
+    [[698,143],[553,189],[670,289],[499,319]]
+  ]
 }
