@@ -4,7 +4,7 @@ class GifBuilder:
     def __init__(self, frames, wait_time=1):
         self.frameList = []
         for i in frames:
-            self.frameList.append(frames[i] if type(i)==type('') else i)
+            self.frameList.append(frames[i] if isinstance(i, str) else i)
         self.maxFrame = len(self.frameList)-1
         self.curFrame = 0
         self.wait = wait_time-1

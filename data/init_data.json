@@ -10,13 +10,13 @@
       "HP": 6,
       "pos_x": 704,
       "pos_y": 179,
-      "wait": 6
+      "wait": 7
     },
     "moth_normal": {
       "HP": 12,
       "pos_x": 704,
       "pos_y": 179,
-      "wait": 6
+      "wait": 7
     }
   }
 }

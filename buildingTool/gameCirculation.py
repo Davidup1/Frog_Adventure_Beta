@@ -11,23 +11,26 @@ def game_circulation(game):
             sys.exit()
         elif event.type == pygame.MOUSEMOTION:
             game.mouse_pos = event.pos
-            #print(game.mouse_pos)
 
 
 def level_init(game):
     game.monsters = []
-    level_data = game.level_data['level_stage'][str(int(game.cur_level/5))]
+    level_data = game.level_data['level_stage'][str(game.cur_level//5)]
     level_pos = game.level_data['level_pos']
-    monster_num = randint(1, level_data['monster_max'])
+    monster_num = randint(level_data['monster_min'], level_data['monster_max'])  # 生成当前关卡怪物总数
     monster_weight = level_data['monster_weight']
+    # 生成当前关卡怪物
     for index in range(monster_num):
         random_num = randint(1, sum(monster_weight))
-        weight = i = 0
-        while i < len(monster_weight):
+        weight = 0
+        for i in range(len(monster_weight)):
             weight += monster_weight[i]
-            if random_num <= weight:
+            if weight >= random_num:
+                game.monsters.append(game.characters[level_data['monsters'][i]].copy())
                 break
-        game.monsters.append(game.characters[level_data['monsters'][i]].copy(index+1, level_pos[monster_num-1][index]))
-        mob = game.monsters[index]
-        print("name:%s index:%d pos:(%d,%d)" % (mob.name, mob.index, mob.x, mob.y))
-
+    # 按血量排序后重设怪物位置
+    game.monsters.sort(key=lambda mob: mob.HP, reverse=True)
+    for index, monster in enumerate(game.monsters):
+        monster.set_pos(level_pos[monster_num - 1][index])
+    # 按y轴位置升序排序以便绘制
+    game.monsters.sort(key=lambda mob: mob.y)
