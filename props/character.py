@@ -2,7 +2,7 @@ class Character:
     def __init__(self, name, gif, HP, pos_x, pos_y, index=0):
         self.name = name  # str
         self.gif = gif  # GifBuilder()
-        self.cnt = 0怪物
+        self.cnt = 0
         self.index = index
         self.HP = HP  # int
         self.armour = 0
