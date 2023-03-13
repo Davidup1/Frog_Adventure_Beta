@@ -5,15 +5,16 @@ class GifBuilder:
         self.frameList = []
         for i in frames:
             self.frameList.append(frames[i] if isinstance(i, str) else i)
+            # 把目录和图片加入到frameList
         self.maxFrame = len(self.frameList)-1
         self.curFrame = 0
-        self.wait = wait_time-1
+        self.wait = wait_time-1  # 5
         self.cnt = 0
-        self.size = self.frameList[0].get_size()
+        self.size = self.frameList[0].get_size()  # 获取图片尺寸
 
     def gif(self):
         if self.cnt == self.wait:
-            self.curFrame = 0 if self.curFrame == self.maxFrame else self.curFrame+1
+            self.curFrame = 0 if self.curFrame == self.maxFrame else self.curFrame + 1
             self.cnt = 0
         else:
             self.cnt += 1

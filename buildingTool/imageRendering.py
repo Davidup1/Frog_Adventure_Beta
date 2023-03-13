@@ -13,8 +13,6 @@ def background_rendering(game):
 
 
 def character_rendering(game):
-    game.screen.blit(game.player.gif.gif(), (game.player.x, game.player.y))
+    game.screen.blit(game.player.gif.gif(), (game.player.x, game.player.y))  # 主角蛙蛙
     for monster in game.monsters:
-        game.screen.blit(monster.gif.gif(), (monster.x, monster.y))
-
-
+        game.screen.blit(monster.gif.gif(), (monster.x, monster.y))  # 怪物

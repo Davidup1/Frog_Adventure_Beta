@@ -11,7 +11,9 @@ def game_circulation(game):
             sys.exit()
         elif event.type == pygame.MOUSEMOTION:
             game.mouse_pos = event.pos
-
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if 302 >= game.mouse_pos[0] >= 300 and 128 >= game.mouse_pos[1] >= 80:
+                game.table_state = not game.table_state
 
 def level_init(game):
     game.monsters = []

@@ -10,24 +10,28 @@ def game_init(game):
     # print(img)
     with open('./data/init_data.json') as f:
         data = json_load(f)
+        print(data)
     with open('./data/level_data.json') as f:
         game.level_data = json_load(f)
+        print(game.level_data)
 
-    game.bg = background_init(img['bg'])
-    game.characters = character_init(data['character'], img['character'])
+    game.bg = background_init(img['bg'])  # bg目录，内含bg和bg_fire
+    game.characters = character_init(data['character'], img['character'])  # {'frog': {'HP': 20, 'pos_x': 106, 'pos_y': 179, 'wait': 5}, 'fly_normal': {'HP': 6, 'pos_x': 704, 'pos_y': 179, 'wait': 7}, 'moth_normal': {'HP': 12, 'pos_x': 704, 'pos_y': 179, 'wait': 7}}
+    # "fly_normal" "frog" "moth_normal"
     game.player = game.characters['frog']
 
 
 def background_init(img):
     background = {}
     for i in img:
-        background[i] = GifBuilder(img[i], 6)
+        print(i)
+        background[i] = GifBuilder(img[i], 6)  #传入"bg"和"bg_fire"
     return background
 
 
 def character_init(data, img):
     characters = {}
-    for characterName in img:
+    for characterName in img:  # "fly_normal" "frog" "moth_normal"
         characters[characterName] = Character(
             characterName,
             GifBuilder(img[characterName], data[characterName]['wait']),
