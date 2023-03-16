@@ -21,10 +21,12 @@ class TableBtn(Sprite):
 
     def onMouseHover(self, hover):
         if hover and not self.mouseHover:  # 鼠标在btn上
-            print("114514")
+            print("放在btn上方")
+            self.mouseHover = hover
         elif self.mouseHover and not hover:
-            print("1919810")
-        self.mouseHover = hover
+            print("鼠标移开了")
+            self.mouseHover = hover
+
 
 
 class Table(Group):
