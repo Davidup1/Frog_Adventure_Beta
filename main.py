@@ -6,6 +6,7 @@ from buildingTool.gameInit import game_init
 from buildingTool.imageRendering import image_rendering
 from buildingTool.gameCirculation import game_circulation
 from buildingTool.gameCirculation import level_init
+from pygame import sprite
 
 
 class Game:
@@ -18,7 +19,6 @@ class Game:
 
         self.font = pygame.font.Font('./font/寒蝉点阵体.ttf', 23)
         self.game_frame_cnt = 0
-        self.mouse_pos = (0, 0)
         self.cur_level = 1
         self.table_state = False  # 用于控制是否将棋盘收上去
 

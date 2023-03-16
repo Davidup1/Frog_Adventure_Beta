@@ -3,6 +3,8 @@ from json import load as json_load
 from pygame.image import load as img_load
 from buildingTool.gifBuilding import GifBuilder
 from props.character import Character
+from props.mouse import Mouse
+from props.table import Table
 
 
 def game_init(game):
@@ -15,10 +17,13 @@ def game_init(game):
         game.level_data = json_load(f)
         print(game.level_data)
 
+    game.mouse = Mouse()
     game.bg = background_init(img['bg'])  # bg目录，内含bg和bg_fire
     game.characters = character_init(data['character'], img['character'])  # {'frog': {'HP': 20, 'pos_x': 106, 'pos_y': 179, 'wait': 5}, 'fly_normal': {'HP': 6, 'pos_x': 704, 'pos_y': 179, 'wait': 7}, 'moth_normal': {'HP': 12, 'pos_x': 704, 'pos_y': 179, 'wait': 7}}
     # "fly_normal" "frog" "moth_normal"
     game.player = game.characters['frog']
+    game.tableGroup = Table([img["table"]["table_main"],img["table"]["table_finish_button"]])
+
 
 
 def background_init(img):
