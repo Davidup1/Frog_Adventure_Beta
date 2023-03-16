@@ -12,8 +12,8 @@ class GifBuilder:
         self.cnt = 0
         self.size = self.frameList[0].get_size()  # 获取图片尺寸
 
-    def gif(self):
-        if self.cnt == self.wait:
+    def gif(self):  # 绘制图像时调用 返回当前帧对应图像
+        if self.cnt == self.wait:  # 每 wait_time 帧 切换到下一张图像
             self.curFrame = 0 if self.curFrame == self.maxFrame else self.curFrame + 1
             self.cnt = 0
         else:

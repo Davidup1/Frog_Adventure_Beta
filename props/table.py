@@ -1,3 +1,3 @@
-class Table():
+class Table:
     def __init__(self):
-        self.bavkground = ''
+        self.background = ''

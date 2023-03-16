@@ -23,5 +23,5 @@ class Character:
         )
 
     def set_pos(self, pos):
-        self.x = pos[0]
-        self.y = pos[1]
+        self.x = self.init_x = pos[0]
+        self.y = self.init_y = pos[1]
