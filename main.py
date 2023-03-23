@@ -1,6 +1,3 @@
-import sys
-from PIL import Image
-import os
 import pygame
 from buildingTool.gameInit import game_init
 from buildingTool.imageRendering import image_rendering
@@ -20,7 +17,8 @@ class Game:
         self.font = pygame.font.Font('./font/寒蝉点阵体.ttf', 23)
         self.game_frame_cnt = 0
         self.cur_level = 1
-        self.table_state = False  # 用于控制是否将棋盘收上去
+        self.mouseButton = False
+        self.mousecnt = 0
 
         game_init(self)  # 加载了背景图片和游戏人物和怪物，并加载到列表
         level_init(self)  # 规定人物位置的方法，有主界面后在在点击开始按钮后调用
