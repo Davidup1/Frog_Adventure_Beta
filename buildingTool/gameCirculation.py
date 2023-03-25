@@ -12,9 +12,12 @@ def game_circulation(game):
         elif event.type == pygame.MOUSEMOTION:
             game.mouse.rect.topleft = event.pos
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            if 302 >= game.mouse_pos[0] >= 300 and 128 >= game.mouse_pos[1] >= 80:
-                game.table_state = not game.table_state
-    game.tableGroup.collisionDetection(game.mouse)
+            game.mouse.cnt += 1
+            game.mouse.button = True
+        elif event.type == pygame.MOUSEBUTTONUP:
+            game.mouse.button = False
+
+    game.tableGroup.eventHandle(game)
 
 def level_init(game):
     game.monsters = []
