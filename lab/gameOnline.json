@@ -1,19 +1,36 @@
 {
   "characters": {
     "frog": {
-
+      "HP": 20,
+      "pos_x": 106,
+      "pos_y": 179,
+      "wait": 5
     },
     "monster": {
-
+      "fly_normal": {
+        "HP": 6,
+        "pos_x": 704,
+        "pos_y": 179,
+        "wait": 7
+      },
+      "moth_normal": {
+        "HP": 12,
+        "pos_x": 704,
+        "pos_y": 179,
+        "wait": 7
+      }
     }
   },
   "dice": {
-
+    "point": [1, 2, 3, 4, 5, 6],
+    "point_index": 0,
+    "type": ["attack", "defence", "restore", "magic"],
+    "type_index": 0
   },
   "table": {
-
+    "show": "True"
   },
   "level": {
-
+    "stage": 1
   }
 }
