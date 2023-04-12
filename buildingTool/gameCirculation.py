@@ -4,6 +4,7 @@ from random import randint
 
 
 def game_circulation(game):
+    game.mouse.click = False
     for event in pygame.event.get():
         # 关闭窗口
         if event.type == pygame.QUIT:
@@ -13,11 +14,15 @@ def game_circulation(game):
             game.mouse.rect.topleft = event.pos
         elif event.type == pygame.MOUSEBUTTONDOWN:
             game.mouse.cnt += 1
+            print("mouse_click_count:", game.mouse.cnt)
+            game.mouse.click = True
             game.mouse.button = True
         elif event.type == pygame.MOUSEBUTTONUP:
             game.mouse.button = False
 
     game.tableGroup.eventHandle(game)
+    game.bag1.event_handle(game)
+    game.bag2.event_handle(game)
 
 def level_init(game):
     game.monsters = []

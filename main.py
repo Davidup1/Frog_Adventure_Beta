@@ -23,8 +23,8 @@ class Game:
 
         while True:
             self.clock.tick(60)
-            game_circulation(self)  # 游戏内部循环中的事件处理
             image_rendering(self)  # 游戏图像绘制
+            game_circulation(self)  # 游戏内部循环中的事件处理
             pygame.display.update()
 
 

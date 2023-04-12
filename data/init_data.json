@@ -16,7 +16,19 @@
       "HP": 12,
       "pos_x": 704,
       "pos_y": 179,
-      "wait": 7
+      "wait": 8
+    },
+    "beetle_normal": {
+      "HP": 20,
+      "pos_x": 704,
+      "pos_y": 179,
+      "wait": 8
+    },
+    "archer_normal": {
+      "HP": 10,
+      "pos_x": 704,
+      "pos_y": 179,
+      "wait": 8
     }
   }
 }
