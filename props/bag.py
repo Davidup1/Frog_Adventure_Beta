@@ -2,6 +2,7 @@ from pygame.sprite import Sprite
 from pygame.sprite import Group
 from pygame.sprite import collide_mask
 from buildingTool.animation import Animation
+from random import randint
 from props.dice import Dice
 
 
@@ -17,9 +18,12 @@ class Bag(Sprite):
         self.hover_image = Bag.images["bag2_hover" if bag_type else "bag1_hover"].copy()
         self.image = self.init_image.copy()
         self.rect = self.image.get_rect()
+        self.all_dices = Group()
         self.dice_list = []
+        self.unable_list = []
+        self.used_list = []
         self.diceGroup = Group()
-        self.remain = 0  # 剩余量,每回合结束后计算一次
+        self.remain = 0  # 剩余量
         self.position = (0, 0)
         self.mouseHover = False
         self.show_info = False
@@ -35,19 +39,20 @@ class Bag(Sprite):
         self.info_animation = Animation()
 
     def init_dices(self, data):
-        j = 0
         for i in data:
-            self.dice_list.append(Dice(i[0], i[1], i[2]))
-            self.diceGroup.add(self.dice_list[j])
-            j += 1
+            dice = Dice(i[0], i[1], i[2])
+            self.all_dices.add(dice)
+            self.dice_list.append(dice)
+            self.diceGroup.add(dice)
         self.init_info()
+        self.remain = len(self.dice_list)
 
     def init_info(self):
         init_pos = (25, 78)
         cnt = 0
         for dice in self.dice_list:
-            if dice.inBag:
-                dice.rect.topleft = (init_pos[0]+58*(cnt%6), init_pos[1]+58*(cnt//6))
+            if dice.where == "bag":
+                dice.set_pos((init_pos[0]+58*(cnt%6), init_pos[1]+58*(cnt//6)))
                 dice.point = dice.pointList[-1]
                 dice.update_image()
                 cnt += 1
@@ -57,11 +62,34 @@ class Bag(Sprite):
         self.diceGroup.draw(self.info_image)
 
     def on_mouse_hover(self, hover):
-        if hover and not self.mouseHover:  # 鼠标在btn上
+        if hover and not self.mouseHover:
             self.image = self.hover_image
         elif self.mouseHover and not hover:
             self.image = self.init_image
         self.mouseHover = hover
+
+    def take_out_dice(self, dice=None):
+        index = randint(0, self.remain - 1)
+        self.dice_list[index].where = "diceTable"
+        self.remain -= 1
+        self.diceGroup.remove(self.dice_list[index])
+        return self.dice_list.pop(index)
+
+    def add_dice(self, dice):
+        self.all_dices.add(dice)
+        self.dice_list.append(dice)
+        self.diceGroup.add(dice)
+        pass
+
+    def remove_dice(self, dice):
+        self.all_dices.remove(dice)
+        self.dice_list.remove(dice)
+        self.diceGroup.remove(dice)
+        pass
+
+    def upgrade_dice(self, dice):
+        dice.upgrade()
+        pass
 
     def on_mouse_click(self, click):
         if self.mouseHover and click:
@@ -88,9 +116,9 @@ class Bag(Sprite):
             self.rect.bottomleft = (0, 539)
             self.info_rect.bottomleft = (13, 395)
 
-    def event_handle(self, game):
-        self.on_mouse_hover(collide_mask(self, game.mouse))
-        self.on_mouse_click(game.mouse.click)
+    def event_handle(self, mouse):
+        self.on_mouse_hover(collide_mask(self, mouse))
+        self.on_mouse_click(mouse.button_down)
 
 
 

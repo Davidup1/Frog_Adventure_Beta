@@ -7,39 +7,43 @@ FLOAT_DURATION = 180
 
 
 class Cell(Sprite):
-    def __init__(self, index, pos):
+    def __init__(self, index, pos, point_card=None):
         super().__init__()
         self.index = index
-        self.image = pygame.Surface((37, 37))
+        self.image = pygame.Surface((48, 48))
         self.image.set_alpha(60)
         self.rect = self.image.get_rect()
         self.selected_image = self.image.copy()
         self.enhanced_image = self.image.copy()
         self.image.set_alpha(0)
         self.init_image = self.image.copy()
+        self.pointCard = point_card.copy() if point_card else None
         pygame.draw.rect(self.selected_image, (100, 255, 255), self.rect)
         pygame.draw.rect(self.enhanced_image, (255, 255, 100), self.rect)
-        self.rect.topleft = pos
+        self.rect.center = pos
         self.init_rect = self.rect.copy()
 
 
 class TableMain(Sprite):
-    def __init__(self, img):
+    def __init__(self, img, point_card):
         super().__init__()
         self.init_image = img.copy()
         self.image = img.copy()
         self.rect = self.image.get_rect()
         self.rect.topleft = (292, 79)  # 38*38
         self.init_rect = self.rect.copy()
+        self.dice_list = [None]*9
+        self.dice_remain = 0
         self.cellList = []
-        for index, pos in enumerate([
-                        (460, 139),
-                    (403, 196), (517, 196),
-            (346, 253), (460, 253), (574, 253),
-                    (403, 310), (517, 310),
-                        (460, 367)
-        ]):
-            self.cellList.append(Cell(index, pos))
+        self.posList = [
+                        (481, 157),
+                    (424, 214), (538, 214),
+            (367, 271), (481, 271), (595, 271),
+                    (424, 328), (538, 328),
+                        (481, 385)
+        ]
+        for index, pos in enumerate(self.posList):
+            self.cellList.append(Cell(index, pos, point_card))
         self.cellMap = [
             [0, 1, 1, 2, 2, 2, 3, 3, 4],
             [1, 0, 2, 1, 1, 3, 2, 2, 3],
@@ -53,21 +57,75 @@ class TableMain(Sprite):
         ]
         self.animation = Animation()
         self.animation.float(FLOAT_DURATION, 3)
+        self.calculate_list = []
+        for i in range(9):
+            self.calculate_list.append(["", 0])
+        self.sum = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
 
     def update_image(self):
         self.rect.topleft = self.animation.play(self.init_rect)
+        self.dice_remain = 0
+        for index in range(9):
+            dice = self.dice_list[index]
+            if dice and not dice.isDragged:
+                self.dice_remain += 1
+                dice.rect.center = self.cellList[index].rect.center
 
-    def onMouseHover(self, cells, cnt):  # cnt之后换为dice.point  (if dice.type == "enhance")
+    def onMouseHover(self, cells, mouse):
+        mouse.cur_cell = None
         for cell in self.cellList:
             cell.image = cell.init_image
             pos = cell.init_rect.topleft
             cell.rect.topleft = pos[0], pos[1]+self.animation.animationList[self.animation.curFrame]
-        for cell in cells:
-            if cell in self.cellList:
-                cell.image = cell.selected_image
-                for index, distance in enumerate(self.cellMap[cell.index]):
-                    if distance == cnt%5:
-                        self.cellList[index].image = self.cellList[index].enhanced_image
+        dice = mouse.cur_dice
+        if dice:
+            for cell in cells:
+                if cell in self.cellList:
+                    # mouse.cur_cell = cell
+                    # if mouse.cur_cell:
+                    #     print(mouse.cur_cell)
+                    cell.image = cell.selected_image
+                    mouse.cur_cell = cell
+                    if dice.type == "BOOST":
+                        for index, distance in enumerate(self.cellMap[cell.index]):
+                            if distance == dice.point:
+                                self.cellList[index].image = self.cellList[index].enhanced_image
+            if mouse.button_up and mouse.cur_cell:
+                if dice in self.dice_list:
+                    self.dice_list[self.dice_list.index(dice)] = None
+                index = self.cellList.index(mouse.cur_cell)
+                self.dice_list[index] = dice
+                dice.set_pos(self.posList[index], "center")
+                dice.shift_place("table")
+
+    def take_out_dice(self, dice):
+        self.dice_list[self.dice_list.index(dice)] = None
+
+    def calculate(self):
+        self.sum = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
+        self.calculate_list = []
+        for i in range(9):
+            self.calculate_list.append(["", 0])
+        for index in range(9):
+            dice = self.dice_list[index]
+            if dice:
+                if dice.type in ["ATTACK", "BLOCK", "HEAL"]:
+                    self.calculate_list[index][0] = dice.type
+                    self.calculate_list[index][1] += dice.point
+                elif dice.type == "BOOST":
+                    for i, distance in enumerate(self.cellMap[index]):
+                        if distance == dice.point:
+                            self.calculate_list[i][1] += dice.point
+                elif dice.type == "MIRROR":
+                    for i, distance in enumerate(self.cellMap[index]):
+                        if distance == 4:
+                            self.calculate_list[i][1] *= 2
+        for index in range(9):
+            data = self.calculate_list[index]
+            self.cellList[index].pointCard.update_image(data[1])
+            if data[0]:
+                self.sum[data[0]] += data[1]
+        # print(self.dice_list, '\n', self.calculate_list, "\n", self.sum)
 
 
 class TableBtn(Sprite):
@@ -96,33 +154,35 @@ class TableBtn(Sprite):
             self.image = self.init_image
         self.mouseHover = hover
 
-    def drag(self, button, pos):
-        if self.mouseHover and button:
-            self.isDragged = True
-        elif not button:
-            self.isDragged = False
-        if self.isDragged:
-            self.rect.center = pos
+    def onClick(self, click, game):
+        if self.mouseHover and click:
+            game.roundFinish = True
+            for dice in game.bag1.all_dices:
+                if dice.where != "bag":
+                    dice.able = False
+                    dice.update_image()
+                print(dice.type, dice.where, dice.able)
 
 
 class Table(Group):
-    def __init__(self, img=[]):
+    def __init__(self, img, point_card):
         super().__init__()
-        self.tableMain = TableMain(img[0])
+        self.tableMain = TableMain(img[0], point_card)
         self.tableBtn = TableBtn(img[1])
         self.add(self.tableMain)
         self.add(self.tableBtn)
         for cell in self.tableMain.cellList:
             self.add(cell)
 
-    def collisionDetection(self, mouse, cnt):
+    def collisionDetection(self, game):
+        mouse = game.mouse
         result = pygame.sprite.spritecollide(mouse, self, False)
         self.tableBtn.onMouseHover(self.tableBtn in result)
-        self.tableMain.onMouseHover(result, cnt)
+        self.tableBtn.onClick(mouse.button_up, game)
+        self.tableMain.onMouseHover(result, mouse)
 
     def eventHandle(self, game):
-        self.collisionDetection(game.mouse, game.mouse.cnt)
-        self.tableBtn.drag(game.mouse.button, game.mouse.rect.topleft)
+        self.collisionDetection(game)
         self.tableBtn.update_image()
         self.tableMain.update_image()
 

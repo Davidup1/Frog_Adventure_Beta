@@ -1,16 +1,23 @@
 from random import randint
 from pygame.sprite import Sprite
+import pygame
 
 
 class Dice(Sprite):
     image_dict = {}
     level_list = ["BASIC", "SILVER", "GOLD"]
+    able_place = ["table", "diceTable"]
+    unable_place = ["bag"]
+    places = {"bag":None, "diceTable":None, "table":None}
 
     def __init__(self, dice_type="ATTACK", level=0, special="", img_dict=None):
         super(Dice, self).__init__()
         if img_dict:
             Dice.image_dict = img_dict
+            Dice.image_dict["type"]["mask"].set_alpha(150)
+        self.able = True
         self.pointList = [1, 1, 1, 1, 1, 1]  # 点数列表
+        self.pointIndex = 0
         self.point = 1
         self.type = dice_type  # "ATTACK" BLOCK BOOST HEAL MIRROR
         self.level = level
@@ -20,8 +27,32 @@ class Dice(Sprite):
         self.update_base_img()
         self.update_image()
         self.rect = self.image.get_rect()
-        self.inBag = True
+        self.where = "bag"  # diceTable table mouse
         self.generate_pointlist()
+        self.init_pos = (0, 0)
+        self.isDragged = False
+        self.mouseHover = False
+
+    def bind(self, bag, table, diceTable):
+        Dice.places["bag"] = bag
+        Dice.places["table"] = table
+        Dice.places["diceTable"] = diceTable
+
+    def copy(self):
+        dice = Dice(self.type, self.level, self.special)
+        dice.pointList = self.pointList
+        dice.base_image = self.base_image
+        dice.image = self.image
+        dice.rect = self.rect
+        dice.where = self.where
+        return dice
+
+    def set_pos(self, pos, mode=None):
+        if mode == "center":
+            self.rect.center = pos
+            self.init_pos = self.rect.topleft
+        else:
+            self.init_pos = self.rect.topleft = pos
 
     def update_base_img(self):
         self.base_image = Dice.image_dict["type"][self.type].copy()
@@ -31,7 +62,10 @@ class Dice(Sprite):
 
     def update_image(self):  # 仅更新点数
         self.image = self.base_image.copy()
+        self.point = self.pointList[self.pointIndex]
         self.image.blit(Dice.image_dict["point"][str(self.point)], (0, 0))
+        if not self.able:
+            self.image.blit(Dice.image_dict["type"]["mask"], (0, 0))
 
     def upgrade(self):
         self.level += 1 if self.level <= 2 else 0
@@ -54,19 +88,41 @@ class Dice(Sprite):
         self.pointList.sort()
 
     def throw_dice(self):
-        self.point = self.pointList[randint(0, 5)]
+        self.pointIndex = randint(0, 5)
+        self.point = self.pointList[self.pointIndex]
+        self.update_image()
 
-    def onMouseHover(self, hover):
-        if hover and not self.mouseHover:
-            self.image = self.hover_image
-        elif self.mouseHover and not hover:
-            self.image = self.init_image
+    def onMouseHover(self, mouse):
+        hover = pygame.sprite.collide_rect(mouse, self)
+        if hover:
+            mouse.cur_dice = self
+            if not self.mouseHover:  # 移入
+                pass
+        else:
+            if mouse.cur_dice == self:
+                mouse.cur_dice = None
+            elif self.mouseHover:  # 移出
+                pass
         self.mouseHover = hover
 
-    def drag(self, dice, pos):
-        if self.mouseHover and dice:
-            self.isDragged = True
-        elif not dice:
-            self.isDragged = False
-        if self.isDragged:
-            self.rect.center = pos
+    def drag(self, mouse):
+        if self.able:
+            if self.mouseHover and mouse.button_down and self.where in Dice.able_place:
+                self.isDragged = True
+                self.init_pos = self.rect.topleft
+
+            elif mouse.button_up:
+                self.isDragged = False
+                self.rect.topleft = self.init_pos
+
+            if self.isDragged:
+                self.rect.center = mouse.rect.topleft
+
+    def shift_place(self, to_where):
+        if to_where != self.where:
+            Dice.places[self.where].take_out_dice(self)
+            self.where = to_where
+
+    def eventHandle(self, mouse):
+        self.onMouseHover(mouse)
+        self.drag(mouse)

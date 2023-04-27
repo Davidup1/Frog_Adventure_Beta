@@ -47,7 +47,6 @@ class Animation:
         self.animationList = [0] * duration
         for i in range(duration):
             self.animationList[i] = round(amplitude*cos(pi*2*i/duration))
-        print(self.animationList)
 
     def reset(self):
         self.circulationCount = self.circulationNum
