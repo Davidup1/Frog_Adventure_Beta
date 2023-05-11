@@ -19,12 +19,21 @@ class Animation:
         self.next = 1
         self.finish = True
         self.is_init = True
+        self.direction = 0
 
     def set_circulation(self, count, mode):
         self.circulationMode = mode  # 0:顺序遍历 1:折返遍历
         self.circulationCount = count  # -1:无限循环
         self.circulationNum = count
         self.next = 1
+
+    def set_direction(self, direction):
+        '''
+
+        :param direction: 0:up 1:down 2:left 3:right
+        :return:
+        '''
+        self.direction = direction
 
     def scale(self, duration, mode, start_size, end_size):
         self.set_circulation(0, 0)
@@ -35,9 +44,10 @@ class Animation:
         y = end_size[1] - start_size[1]
         for i in range(duration):
             if mode == Animation.LINEAR:
-                self.animationList[i] = (int(start_size[0]+x*i/duration), int(start_size[1]+y*i/duration))
+                self.animationList[i] = (int(start_size[0] + x * i / duration), int(start_size[1] + y * i / duration))
             elif mode == Animation.SIN:
-                self.animationList[i] = (int(start_size[0]+x*(-cos(pi*i/duration)+1)/2), int(start_size[1]+y*(-cos(pi*i/duration)+1)/2))
+                self.animationList[i] = (int(start_size[0] + x * (-cos(pi * i / duration) + 1) / 2),
+                                         int(start_size[1] + y * (-cos(pi * i / duration) + 1) / 2))
 
     def float(self, duration, amplitude):
         self.finish = False
@@ -46,7 +56,30 @@ class Animation:
         self.duration = duration
         self.animationList = [0] * duration
         for i in range(duration):
-            self.animationList[i] = round(amplitude*cos(pi*2*i/duration))
+            self.animationList[i] = round(amplitude * cos(pi * 2 * i / duration))
+
+    def quadratic(self, duration, peak=(1, -1), x_end=3):
+        self.finish = False
+        self.set_circulation(0, 0)
+        self.type = "quadratic"
+        self.duration = duration
+        self.animationList = [0] * duration
+        a, b = peak
+        k = -b / a ** 2
+        for i in range(duration):
+            self.animationList[i] = round(k * (i * x_end / (duration - 1) - a) ** 2 + b)
+        self.reset()
+
+    def peak(self, duration=60, peak=100):
+        self.finish = False
+        self.set_circulation(1, 1)
+        self.type = "peak"
+        self.duration = duration
+        self.animationList = [0] * duration
+        k = peak / 4 ** 5
+        for i in range(duration):
+            self.animationList[i] = round(k * (4 ** (i / (duration - 1) * 10 - 5)))
+        self.reset()
 
     def reset(self):
         self.circulationCount = self.circulationNum
@@ -56,7 +89,8 @@ class Animation:
         self.finish = False
 
     def play(self, data):
-        is_end = (self.curFrame==self.duration-1 and self.next==1) or (self.curFrame==0 and self.next==-1) or self.is_init
+        is_end = (self.curFrame == self.duration - 1 and self.next == 1) or (
+                    self.curFrame == 0 and self.next == -1) or self.is_init
         if self.circulationCount:
             if self.circulationMode:
                 if is_end:
@@ -64,7 +98,7 @@ class Animation:
                     self.next = -self.next
                 self.curFrame += self.next
             else:
-                if self.curFrame == self.duration-1:
+                if self.curFrame == self.duration - 1:
                     self.circulationCount -= 1
                     self.curFrame = 0
                 self.curFrame += self.next
@@ -80,7 +114,9 @@ class Animation:
         if not self.finish:
             if self.type == "scale":  # data为image
                 return transform.scale(data, self.animationList[self.curFrame])
-            elif self.type == "float":  # data为rect
+            elif self.type in ["float", "quadratic", "peak"]:  # data为rect
                 pos = data.topleft
-                return pos[0], pos[1]+self.animationList[self.curFrame]
+                num = self.animationList[self.curFrame]
+                return pos[0] + ( (num if self.direction%2 else -num) if self.direction // 2 else 0), \
+                       pos[1] + (0 if self.direction // 2 else (-num if self.direction%2 else num) )
         return None

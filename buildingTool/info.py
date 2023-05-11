@@ -9,5 +9,6 @@ def show_info(game):
     mouse_pos_text = game.font.render("%d,%d" % game.mouse.rect.topleft, False, (255, 255, 255))
     game.screen.blit(mouse_pos_text, (36, 0))
 
-    game_floor = game.font.render("floor %d" % game.cur_level, False, (255, 255, 255))
-    game.screen.blit(game_floor, (880, 14))
+    if game.cur_level:
+        game_floor = game.font.render("floor %d" % game.cur_level, False, (255, 255, 255))
+        game.screen.blit(game_floor, (880, 14))

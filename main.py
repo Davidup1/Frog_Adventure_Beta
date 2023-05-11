@@ -2,7 +2,6 @@ import pygame
 from buildingTool.gameInit import game_init
 from buildingTool.imageRendering import image_rendering
 from buildingTool.gameCirculation import game_circulation
-from buildingTool.gameCirculation import level_init
 from pygame import sprite
 
 
@@ -16,9 +15,10 @@ class Game:
 
         self.font = pygame.font.Font('./font/寒蝉点阵体.ttf', 23)
         self.game_frame_cnt = 0
+        self.cur_level = 0
+        self.delay = 0
 
         game_init(self)
-        level_init(self)
 
         while True:
             self.clock.tick(60)

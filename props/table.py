@@ -30,7 +30,7 @@ class TableMain(Sprite):
         self.init_image = img.copy()
         self.image = img.copy()
         self.rect = self.image.get_rect()
-        self.rect.topleft = (292, 79)  # 38*38
+        self.rect.topleft = (292, 60)  # 38*38
         self.init_rect = self.rect.copy()
         self.dice_list = [None]*9
         self.dice_remain = 0
@@ -43,7 +43,7 @@ class TableMain(Sprite):
                         (481, 385)
         ]
         for index, pos in enumerate(self.posList):
-            self.cellList.append(Cell(index, pos, point_card))
+            self.cellList.append(Cell(index, (pos[0], pos[1]-20), point_card))
         self.cellMap = [
             [0, 1, 1, 2, 2, 2, 3, 3, 4],
             [1, 0, 2, 1, 1, 3, 2, 2, 3],
@@ -63,7 +63,9 @@ class TableMain(Sprite):
         self.sum = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
 
     def update_image(self):
-        self.rect.topleft = self.animation.play(self.init_rect)
+        pos = self.animation.play(self.init_rect)
+        if pos:
+            self.rect.topleft = pos
         self.dice_remain = 0
         for index in range(9):
             dice = self.dice_list[index]
@@ -137,7 +139,7 @@ class TableBtn(Sprite):
         self.hover_image = img.copy()
         pygame.draw.rect(img, (255, 255, 255, 40), self.rect)
         self.hover_image.blit(img, (0, 0))
-        self.rect.topleft = (320, 80)
+        self.rect.topleft = (320, 60)
         self.init_rect = self.rect.copy()
         self.mouseHover = False
         self.isDragged = False
@@ -145,7 +147,9 @@ class TableBtn(Sprite):
         self.animation.float(FLOAT_DURATION, 5)
 
     def update_image(self):
-        self.rect.topleft = self.animation.play(self.init_rect)
+        pos = self.animation.play(self.init_rect)
+        if pos:
+            self.rect.topleft = pos
 
     def onMouseHover(self, hover):
         if hover and not self.mouseHover:  # 鼠标在btn上
@@ -157,11 +161,14 @@ class TableBtn(Sprite):
     def onClick(self, click, game):
         if self.mouseHover and click:
             game.roundFinish = True
+            game.tableGroup.tableMain.animation.quadratic(50, (1, 16), 7)
+            self.animation.quadratic(50, (1, 16), 7)
+            game.delay = 60
             for dice in game.bag1.all_dices:
                 if dice.where != "bag":
                     dice.able = False
                     dice.update_image()
-                print(dice.type, dice.where, dice.able)
+                # print(dice.type, dice.where, dice.able)
 
 
 class Table(Group):

@@ -3,11 +3,16 @@ from buildingTool.info import show_info
 
 def image_rendering(game):
     background_rendering(game)
-    character_rendering(game)
-    table_rendering(game)
-    bag_rendering(game)
-    diceTable_rendering(game)
-    info_rendering(game)
+
+    if game.status == "main":
+        game.mainPage.draw(game.screen)
+    elif game.status == "level":
+        character_rendering(game)
+        table_rendering(game)
+        bag_rendering(game)
+        diceTable_rendering(game)
+        info_rendering(game)
+
     show_info(game)
 
 
@@ -17,9 +22,9 @@ def background_rendering(game):
 
 
 def character_rendering(game):
-    game.screen.blit(game.player.gif.gif(), (game.player.x, game.player.y))  # 主角蛙蛙
+    game.screen.blit(game.player.gif.gif(), game.player.rect.topleft)  # 主角蛙蛙
     for monster in game.monsters:
-        game.screen.blit(monster.gif.gif(), (monster.x, monster.y))  # 怪物
+        game.screen.blit(monster.gif.gif(), monster.rect.topleft)  # 怪物
 
 
 def table_rendering(game):
