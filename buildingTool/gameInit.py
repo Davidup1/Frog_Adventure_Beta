@@ -91,6 +91,7 @@ def level(game):
 
 def online(game):
     game.status = "online"
+    online_init(game, "online")
 
 def settings(game):
     game.status = "settings"
@@ -123,6 +124,10 @@ def level_init(game, mode):
     game.monsters.sort(key=lambda mob: mob.rect.topleft[1])
     round_init(game)
 
+def online_init(game, mode):
+    game.roundFinish = False
+    game.monsters = [game.characters["frog"].copy()]
+    round_init(game)
 
 def round_init(game):
     game.diceTable.round_init(game.bag1)

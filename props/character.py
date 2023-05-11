@@ -30,7 +30,7 @@ class Character:
         )
 
     def set_pos(self, pos):
-        self.init_rect.topleft = pos
+        self.init_rect.topleft = self.rect.topleft = pos
 
     def attack(self):
         self.animation.peak()
