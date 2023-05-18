@@ -5,8 +5,14 @@ def image_rendering(game):
     background_rendering(game)
 
     if game.status == "main":
-        game.mainPage.draw(game.screen)
+        game.mainPage.draw(game.screen) # Group.draw
     elif game.status == "level":
+        character_rendering(game)
+        table_rendering(game)
+        bag_rendering(game)
+        diceTable_rendering(game)
+        info_rendering(game)
+    elif game.status == "online":
         character_rendering(game)
         table_rendering(game)
         bag_rendering(game)
@@ -23,8 +29,12 @@ def background_rendering(game):
 
 def character_rendering(game):
     game.screen.blit(game.player.gif.gif(), game.player.rect.topleft)  # 主角蛙蛙
-    for monster in game.monsters:
-        game.screen.blit(monster.gif.gif(), monster.rect.topleft)  # 怪物
+    if game.status == "level":
+        for monster in game.monsters:
+            game.screen.blit(monster.gif.gif(), monster.rect.topleft)  # 怪物
+    if game.status == "online":
+        # 这里去game_init里面添加对手玩家
+        pass
 
 
 def table_rendering(game):

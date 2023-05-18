@@ -27,7 +27,7 @@ def game_init(game):
     game.status = "main"
     game.mouse = Mouse()
     game.bg = background_init(img['bg'])  # bg目录，内含bg和bg_fire
-    game.characters = character_init(data['character'], img['character'])
+    game.characters = character_init(data['character'], img['character'])  # 游戏人物角色字典
     game.player = game.characters['frog']
     game.pointCard = PointCard(img["ball"]["point_card"], game.font)
     game.tableGroup = Table([img["table"]["table_main"], img["table"]["table_finish_button"]], game.pointCard)
@@ -75,7 +75,7 @@ def load_img_dir(path):
             img_group[temp[0]] = img_load(path + '/' + filename)
     return img_group
 
-
+# 创建按钮实例
 def main_page_init(game,img):
     game.mainPage = Group()
     button_list = ["level", "online", "settings"]
@@ -91,7 +91,7 @@ def level(game):
 
 def online(game):
     game.status = "online"
-    online_init(game, "online")
+    online_init(game, "init")
 
 def settings(game):
     game.status = "settings"
@@ -125,6 +125,10 @@ def level_init(game, mode):
     round_init(game)
 
 def online_init(game, mode):
+    if mode == "init":
+        game.cur_level = 1
+    else:
+        game.cur_level += 1
     game.roundFinish = False
     game.monsters = [game.characters["frog"].copy()]
     round_init(game)

@@ -23,6 +23,8 @@ def game_circulation(game):
             button.eventHandle()
     if game.status == "level":
         level_page(game)
+    if game.status == "online":
+        level_page(game)
     game.mouse.log(game)
 
 
