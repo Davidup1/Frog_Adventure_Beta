@@ -6,6 +6,12 @@
       "pos_y": 179,
       "wait": 5
     },
+    "frog_online": {
+      "HP": 20,
+      "pos_x": 106,
+      "pos_y": 179,
+      "wait": 5
+    },
     "fly_normal": {
       "HP": 6,
       "pos_x": 704,
