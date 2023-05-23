@@ -27,8 +27,9 @@ def game_init(game):
     game.status = "main"
     game.mouse = Mouse()
     game.bg = background_init(img['bg'])  # bg目录，内含bg和bg_fire
-    game.characters = character_init(data['character'], img['character'])  # 游戏人物角色字典
-    game.player = game.characters['frog']
+    game.ball = Ball(img_dict=img["ball"], font=game.font)
+    game.characters = character_init(data['character'], img['character'])
+    game.player = game.characters['frog'].copy(True)
     game.pointCard = PointCard(img["ball"]["point_card"], game.font)
     game.tableGroup = Table([img["table"]["table_main"], img["table"]["table_finish_button"]], game.pointCard)
     game.testDice = Dice(img_dict=img["dice"])  # 初始化骰子的图像到类里
@@ -39,7 +40,7 @@ def game_init(game):
     game.bags.add(game.bag1)
     game.bags.add(game.bag2)
     game.diceTable = DiceTable(img["diceTable"])
-    game.ball = Ball(img_dict=img["ball"])
+    game.level_complete = False
 
 
     game.testDice.bind(game.bag1, game.tableGroup.tableMain, game.diceTable)
@@ -54,13 +55,16 @@ def background_init(img):
 
 def character_init(data, img):
     characters = {}
-    for characterName in img:  # "fly_normal" "frog" "moth_normal"
+    print(img)
+    print(data)
+    for characterName in img.keys():  # "fly_normal" "frog" "moth_normal"
         characters[characterName] = Character(
             characterName,
             GifBuilder(img[characterName], data[characterName]['wait']),
             data[characterName]['HP'],
             data[characterName]['pos_x'],
-            data[characterName]['pos_y']
+            data[characterName]['pos_y'],
+            data[characterName]['action']
         )
     return characters
 
@@ -91,21 +95,22 @@ def level(game):
 
 def online(game):
     game.status = "online"
-    online_init(game, "init")
 
 def settings(game):
     game.status = "settings"
 
-def level_init(game, mode):
+def level_init(game, mode="none"):
     if mode == "init":
         game.cur_level = 1
     else:
         game.cur_level += 1
     game.roundFinish = False
+    game.player.init_ball()
     game.monsters = []
     level_data = game.level_data['level_stage'][str(game.cur_level//5)]
     level_pos = game.level_data['level_pos']
-    monster_num = randint(level_data['monster_min'], level_data['monster_max'])  # 生成当前关卡怪物总数
+    monster_num = 2# randint(level_data['monster_min'], level_data['monster_max'])  # 生成当前关卡怪物总数
+    print(level_pos[monster_num - 1])
     monster_weight = level_data['monster_weight']
     # 生成当前关卡怪物
     for index in range(monster_num):
@@ -117,12 +122,16 @@ def level_init(game, mode):
                 game.monsters.append(game.characters[level_data['monsters'][i]].copy())
                 break
     # 按血量排序后重设怪物位置
-    game.monsters.sort(key=lambda mob: mob.HP, reverse=True)
+    game.monsters.sort(key=lambda mob: mob.balls["HP"].num, reverse=True)
     for index, monster in enumerate(game.monsters):
-        monster.set_pos(level_pos[monster_num - 1][index])
+        monster.set_pos(tuple(level_pos[monster_num - 1][index]))
+        monster.init_ball()
     # 按y轴位置升序排序以便绘制
     game.monsters.sort(key=lambda mob: mob.rect.topleft[1])
     round_init(game)
+    game.flag = ["",""]
+    game.monster_num = len(game.monsters)
+    game.cur_monster = -1
 
 def online_init(game, mode):
     if mode == "init":

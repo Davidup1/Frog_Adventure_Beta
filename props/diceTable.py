@@ -19,6 +19,7 @@ class DiceTable:
             self.cell_group.add(cell)
         self.dice_list = []
         self.dice_group = Group()
+        self.dice_remain = 0
         self.icon_list = [0]*5
         self.icon_pos_list = [(0, 0)]*5
         self.energy = 0
@@ -27,6 +28,7 @@ class DiceTable:
         self.energy = 0
         for i in range(5-len(self.dice_list)):
             dice = bag.take_out_dice()
+            dice.throw_dice()
             self.dice_list.append(dice)
             self.dice_group.add(dice)
         self.update_dice_pos()
@@ -45,7 +47,11 @@ class DiceTable:
             pos = DiceTable.init_pos
             self.icon_pos_list.append((pos[0]+12+78*index, pos[1]+63))
             index += 1
-        self.energy = 3-Dice.places["table"].dice_remain
+        self.dice_remain = 0
+        for i in self.dice_list:
+            if i:
+                self.dice_remain += 1
+        self.energy = self.dice_remain-2
 
     def take_out_dice(self, dice):
         self.dice_list.remove(dice)

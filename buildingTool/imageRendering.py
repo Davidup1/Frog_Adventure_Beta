@@ -1,4 +1,4 @@
-from buildingTool.info import show_info
+
 
 
 def image_rendering(game):
@@ -19,7 +19,7 @@ def image_rendering(game):
         diceTable_rendering(game)
         info_rendering(game)
 
-    show_info(game)
+
 
 
 def background_rendering(game):
@@ -30,8 +30,16 @@ def background_rendering(game):
 def character_rendering(game):
     game.screen.blit(game.player.gif.gif(), game.player.rect.topleft)  # 主角蛙蛙
     if game.status == "level":
+        for ball in game.player.balls.values():
+            ball.update_image()
+            if ball.show:
+                game.screen.blit(ball.image, ball.rect.topleft)
         for monster in game.monsters:
             game.screen.blit(monster.gif.gif(), monster.rect.topleft)  # 怪物
+            for ball in monster.balls.values():
+                ball.update_image()
+                if ball.show:
+                    game.screen.blit(ball.image, ball.rect.topleft)
     if game.status == "online":
         # 这里去game_init里面添加对手玩家
         for monster in game.monsters:

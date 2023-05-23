@@ -43,7 +43,7 @@ class TableMain(Sprite):
                         (481, 385)
         ]
         for index, pos in enumerate(self.posList):
-            self.cellList.append(Cell(index, (pos[0], pos[1]-20), point_card))
+            self.cellList.append(Cell(index, (pos[0], pos[1]-19), point_card))
         self.cellMap = [
             [0, 1, 1, 2, 2, 2, 3, 3, 4],
             [1, 0, 2, 1, 1, 3, 2, 2, 3],
@@ -93,17 +93,21 @@ class TableMain(Sprite):
                             if distance == dice.point:
                                 self.cellList[index].image = self.cellList[index].enhanced_image
             if mouse.button_up and mouse.cur_cell:
-                if dice in self.dice_list:
-                    self.dice_list[self.dice_list.index(dice)] = None
                 index = self.cellList.index(mouse.cur_cell)
-                self.dice_list[index] = dice
-                dice.set_pos(self.posList[index], "center")
-                dice.shift_place("table")
+                if not self.dice_list[index]:
+                    if dice in self.dice_list:
+                        self.dice_list[self.dice_list.index(dice)] = None
+                    self.dice_list[index] = dice
+                    dice.set_pos(self.posList[index], "center")
+                    dice.shift_place("table")
 
-    def take_out_dice(self, dice):
+    def take_out_dice(self, dice,num=0):
+        if num:
+            print(self.dice_list)
+            print(self.dice_list.index(dice))
         self.dice_list[self.dice_list.index(dice)] = None
 
-    def calculate(self):
+    def calculate(self, game):
         self.sum = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
         self.calculate_list = []
         for i in range(9):
@@ -128,6 +132,9 @@ class TableMain(Sprite):
             if data[0]:
                 self.sum[data[0]] += data[1]
         # print(self.dice_list, '\n', self.calculate_list, "\n", self.sum)
+        game.player.balls['DEF'].num = self.sum["BLOCK"]
+        game.player.balls['Heal'].num = self.sum["HEAL"]
+        game.monsters[-1].balls['ATK'].num = self.sum["ATTACK"]
 
 
 class TableBtn(Sprite):
@@ -164,6 +171,7 @@ class TableBtn(Sprite):
             game.tableGroup.tableMain.animation.quadratic(50, (1, 16), 7)
             self.animation.quadratic(50, (1, 16), 7)
             game.delay = 60
+            game.flag[:] = ["player","attack"]
             for dice in game.bag1.all_dices:
                 if dice.where != "bag":
                     dice.able = False
@@ -192,5 +200,9 @@ class Table(Group):
         self.collisionDetection(game)
         self.tableBtn.update_image()
         self.tableMain.update_image()
+
+    def back(self):
+        self.tableBtn.animation.backward()
+        self.tableMain.animation.backward()
 
 

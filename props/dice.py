@@ -9,9 +9,12 @@ class Dice(Sprite):
     able_place = ["table", "diceTable"]
     unable_place = ["bag"]
     places = {"bag":None, "diceTable":None, "table":None}
+    CNT = 0
 
     def __init__(self, dice_type="ATTACK", level=0, special="", img_dict=None):
         super(Dice, self).__init__()
+        Dice.CNT += 1
+        self.num = Dice.CNT
         if img_dict:
             Dice.image_dict = img_dict
             Dice.image_dict["type"]["mask"].set_alpha(150)
@@ -111,12 +114,11 @@ class Dice(Sprite):
                 self.isDragged = True
                 self.init_pos = self.rect.topleft
 
-            elif mouse.button_up:
-                self.isDragged = False
-                self.rect.topleft = self.init_pos
-
             if self.isDragged:
                 self.rect.center = mouse.rect.topleft
+                if mouse.button_up:
+                    self.isDragged = False
+                    self.rect.topleft = self.init_pos
 
     def shift_place(self, to_where):
         if to_where != self.where:

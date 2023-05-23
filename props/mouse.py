@@ -26,11 +26,14 @@ class Mouse(Sprite):
             self.button_pre = self.button
 
     def log(self, game):
+        if game.status == "level":
+            pass
         if self.button_up:
             print("mouse_click_count:", self.cnt)
             if self.cur_dice and 0:
                 print(self.cur_dice.where)
+            if game.status == "level":
+                pass
             # print(Dice.places["table"].dice_list)
-            for i in game.bag1.all_dices:
-                print(i.able, end=" ")
-            print()
+            # for i in game.monsters:
+            #     print(i.rect.topleft)

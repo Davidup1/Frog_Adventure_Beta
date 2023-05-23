@@ -17,6 +17,7 @@ class Animation:
         self.circulationCount = 0
         self.circulationNum = 0
         self.next = 1
+        self.end = self.duration - 1
         self.finish = True
         self.is_init = True
         self.direction = 0
@@ -70,7 +71,7 @@ class Animation:
             self.animationList[i] = round(k * (i * x_end / (duration - 1) - a) ** 2 + b)
         self.reset()
 
-    def peak(self, duration=60, peak=100):
+    def peak(self, duration=20, peak=100):
         self.finish = False
         self.set_circulation(1, 1)
         self.type = "peak"
@@ -78,24 +79,41 @@ class Animation:
         self.animationList = [0] * duration
         k = peak / 4 ** 5
         for i in range(duration):
-            self.animationList[i] = round(k * (4 ** (i / (duration - 1) * 10 - 5)))
+            self.animationList[i] = round(k * (4 ** (i / (duration - 1) * 5)))
+        self.reset()
+
+    def shake(self, duration=10, amplitude=30):
+        self.finish = False
+        self.set_circulation(0, 0)
+        self.type = "shake"
+        self.duration = duration
+        self.animationList = [0] * duration
+        for i in range(duration):
+            self.animationList[i] = round(amplitude * cos(pi * 8 * i / duration)*4**(-i*2 / duration))
         self.reset()
 
     def reset(self):
         self.circulationCount = self.circulationNum
         self.next = 1
+        self.end = self.duration -1
         self.curFrame = 0
         self.is_init = False
         self.finish = False
 
-    def play(self, data):
-        is_end = (self.curFrame == self.duration - 1 and self.next == 1) or (
-                    self.curFrame == 0 and self.next == -1) or self.is_init
+    def backward(self):
+        self.circulationCount = self.circulationNum
+        self.next = -self.next
+        self.end = self.duration - 1 if self.next == 1 else 0
+        self.finish = False
+
+    def play(self, data, mode=0):
+        is_end = (self.curFrame == self.end) or self.is_init
         if self.circulationCount:
             if self.circulationMode:
                 if is_end:
                     self.circulationCount -= 1
                     self.next = -self.next
+                    self.end = self.duration - 1 if self.next == 1 else 0
                 self.curFrame += self.next
             else:
                 if self.curFrame == self.duration - 1:
@@ -106,16 +124,17 @@ class Animation:
             if is_end:
                 self.finish = True
             else:
-                self.finish = False
                 self.curFrame += self.next
+                self.finish = False
         # print((self.curFrame==self.duration-1 and self.next==1) ,(self.curFrame==0 and self.next==-1) , self.is_init)
         # print("cur:", self.curFrame, "cnt:", self.circulationCount, "finish:", self.finish)
 
         if not self.finish:
+            self.finish = (self.curFrame == self.end) and not self.circulationCount
             if self.type == "scale":  # data为image
-                return transform.scale(data, self.animationList[self.curFrame])
-            elif self.type in ["float", "quadratic", "peak"]:  # data为rect
-                pos = data.topleft
+                return transform.scale(data.copy(), self.animationList[self.curFrame])
+            elif self.type in ["float", "quadratic", "peak", "shake"]:  # data为rect
+                pos = data.center if mode else data.topleft
                 num = self.animationList[self.curFrame]
                 return pos[0] + ( (num if self.direction%2 else -num) if self.direction // 2 else 0), \
                        pos[1] + (0 if self.direction // 2 else (-num if self.direction%2 else num) )

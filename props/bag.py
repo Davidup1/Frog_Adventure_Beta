@@ -21,7 +21,6 @@ class Bag(Sprite):
         self.all_dices = Group()
         self.dice_list = []
         self.unable_list = []
-        self.used_list = []
         self.diceGroup = Group()
         self.remain = 0  # 剩余量
         self.position = (0, 0)
@@ -119,6 +118,27 @@ class Bag(Sprite):
     def event_handle(self, mouse):
         self.on_mouse_hover(collide_mask(self, mouse))
         self.on_mouse_click(mouse.button_down)
+
+    def round_reset(self,game):
+        table = game.tableGroup.tableMain
+        diceTable = game.diceTable
+        for dice in self.all_dices:
+            if dice.where != "bag":
+                dice.able = True
+                dice.update_image()
+                if dice.where == "table":
+                    if dice.special == "CRYSTAL":
+                        dice.shift_place("bag")
+                        self.unable_list.append(dice)
+                    elif dice.special == "HEAVY":
+                        dice.point -= 1
+                    else:
+                        self.dice_list.append(dice)
+                        dice.shift_place("bag")
+                        self.diceGroup.add(dice)
+        self.remain = len(self.dice_list)
+        diceTable.round_init(self)
+        table.calculate(game)
 
 
 

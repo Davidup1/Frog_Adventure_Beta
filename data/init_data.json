@@ -4,37 +4,77 @@
       "HP": 20,
       "pos_x": 106,
       "pos_y": 179,
-      "wait": 5
+      "wait": 5,
+      "action": [["none"]]
     },
     "frog_online": {
       "HP": 20,
       "pos_x": 106,
       "pos_y": 179,
-      "wait": 5
+      "wait": 5,
+      "action": [["none"]]
     },
     "fly_normal": {
       "HP": 6,
       "pos_x": 704,
       "pos_y": 179,
-      "wait": 7
+      "wait": 7,
+      "action": [["attack"]]
     },
     "moth_normal": {
       "HP": 12,
       "pos_x": 704,
       "pos_y": 179,
-      "wait": 8
+      "wait": 8,
+      "action": [
+        ["attack","attack"],
+        ["attack","heal"],
+        ["heal","heal"]
+      ]
     },
     "beetle_normal": {
       "HP": 20,
       "pos_x": 704,
       "pos_y": 179,
-      "wait": 8
+      "wait": 8,
+      "action": [
+        ["attack_b","defence"]
+      ]
     },
     "archer_normal": {
       "HP": 10,
       "pos_x": 704,
       "pos_y": 179,
-      "wait": 8
+      "wait": 8,
+      "action": [["attack","attack"]]
+    },
+    "fly_elite": {
+      "HP": 10,
+      "pos_x": 704,
+      "pos_y": 179,
+      "wait": 7,
+      "action": [
+        ["attack_s","attack_s","attack_s","attack_s","attack_s"],
+        ["attack_b","attack_b"],
+        ["attack_h"]
+      ]
+    },
+    "beetle_elite": {
+      "HP": 25,
+      "pos_x": 704,
+      "pos_y": 179,
+      "wait": 8,
+      "action": [
+        ["attack_b","defence","defence"],
+        ["attack_s","defence","attack_s","defence","defence","attack_s"]
+      ]
+    },
+    "archer_elite": {
+      "HP": 10,
+      "pos_x": 704,
+      "pos_y": 179,
+      "wait": 8,
+      "action": [["attack_h","attack_h"]]
     }
   }
 }

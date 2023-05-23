@@ -1,0 +1,1104 @@
+Thu May 18 20:39:52 2023
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 51, in play
+    self.rect.topleft = self.animation.play(self.init_rect)
+TypeError: invalid rect assignment
+
+
+
+
+============Thu May 18 20:43:43 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 51, in play
+    self.rect.topleft = self.animation.play(self.init_rect)
+TypeError: invalid rect assignment
+
+
+
+
+============Thu May 18 23:14:52 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 31, in __init__
+    show_info(game)
+NameError: name 'game' is not defined
+
+
+
+
+============Fri May 19 08:27:59 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 30, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 51, in play
+    self.rect.topleft = self.animation.play(self.init_rect)
+TypeError: invalid rect assignment
+
+
+
+
+============Fri May 19 08:29:45 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 30, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 51, in play
+    self.rect.topleft = self.animation.play(self.init_rect)
+TypeError: invalid rect assignment
+
+
+
+
+============Fri May 19 08:37:43 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 30, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 51, in play
+    self.rect.topleft = self.animation.play(self.init_rect)
+TypeError: invalid rect assignment
+
+
+
+
+============Fri May 19 08:38:49 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 30, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 51, in play
+    self.rect.topleft = self.animation.play(self.init_rect)
+TypeError: invalid rect assignment
+
+
+
+
+============Fri May 19 08:43:59 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 33, in __init__
+    raise Exception('aaa')
+Exception: aaa
+
+
+
+
+============Fri May 19 08:50:50 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 34, in __init__
+    raise Exception('aaa')
+Exception: aaa
+
+
+
+
+============Fri May 19 08:52:23 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 34, in __init__
+    raise Exception('aaa')
+Exception: aaa
+
+
+
+
+============Fri May 19 08:52:50 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 34, in __init__
+    raise Exception('aaa')
+Exception: aaa
+
+
+
+
+============Fri May 19 08:55:19 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 51, in play
+    self.rect.topleft = self.animation.play(self.init_rect)
+TypeError: invalid rect assignment
+
+
+
+
+============Fri May 19 08:58:11 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 52, in play
+    self.rect.topleft = self.rect.topleft if self.animation.finish else self.animation.play(self.init_rect)
+TypeError: invalid rect assignment
+
+
+
+
+============Fri May 19 09:00:18 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 53, in play
+    self.rect.topleft = self.rect.topleft if pos else pos
+TypeError: invalid rect assignment
+
+
+
+
+============Fri May 19 09:00:57 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 56, in character_movement
+    game.player.play()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 54, in play
+    self.rect.topleft = self.rect.topleft if pos else pos
+TypeError: invalid rect assignment
+
+
+
+
+============Fri May 19 09:28:52 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    game.mouse.log(game)
+  File "D:\Python环境\Frog_Adventure\props\mouse.py", line 34, in log
+    for i in game.monsters:
+AttributeError: 'Game' object has no attribute 'monsters'
+
+
+
+
+============Fri May 19 09:29:00 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    game.mouse.log(game)
+  File "D:\Python环境\Frog_Adventure\props\mouse.py", line 34, in log
+    for i in game.monsters:
+AttributeError: 'Game' object has no attribute 'monsters'
+
+
+
+
+============Fri May 19 09:29:38 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    game.mouse.log(game)
+  File "D:\Python环境\Frog_Adventure\props\mouse.py", line 34, in log
+    for i in game.monsters:
+AttributeError: 'Game' object has no attribute 'monsters'
+
+
+
+
+============Fri May 19 13:05:49 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 32, in __init__
+    raise Exception('emm...')
+Exception: emm...
+
+
+
+
+============Fri May 19 13:16:52 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 32, in __init__
+    raise Exception('emm...')
+Exception: emm...
+
+
+
+
+============Fri May 19 13:39:49 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 69, in character_movement
+    game.player.add_arm()
+  File "D:\Python环境\Frog_Adventure\props\character.py", line 65, in add_arm
+    self.balls["ARM"] += self.balls["DEF"].num
+TypeError: unsupported operand type(s) for +=: 'Ball' and 'int'
+
+
+
+
+============Fri May 19 13:48:18 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 26, in character_rendering
+    if ball.num>0:
+AttributeError: 'int' object has no attribute 'num'
+
+
+
+
+============Fri May 19 13:53:35 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 64, in character_movement
+    game.monster.balls["ATK"].num = 0
+AttributeError: 'Game' object has no attribute 'monster'
+
+
+
+
+============Fri May 19 20:09:49 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 32, in __init__
+    raise Exception("114514")
+Exception: 114514
+
+
+
+
+============Sun May 21 20:32:13 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 24, in __init__
+    game_init(self)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 31, in game_init
+    game.characters = character_init(data['character'], img['character'])
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 58, in character_init
+    characters[characterName] = Character(
+TypeError: __init__() missing 1 required positional argument: 'action'
+
+
+
+
+============Sun May 21 20:33:15 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 34, in level_page
+    game.tableGroup.eventHandle(game)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 197, in eventHandle
+    self.collisionDetection(game)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 193, in collisionDetection
+    self.tableBtn.onClick(mouse.button_up, game)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 168, in onClick
+    game.tableGroup.tableMain.animation_full.quadratic(50, (1, 16), 7)
+AttributeError: 'TableMain' object has no attribute 'animation_full'
+
+
+
+
+============Sun May 21 20:35:29 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 61, in character_movement
+    if game.player.animation_full.curFrame == len(game.player.animation_full.animationList)-1:
+AttributeError: 'Character' object has no attribute 'animation_full'
+
+
+
+
+============Sun May 21 20:36:32 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 61, in character_movement
+    if game.player.animation_full.curFrame == len(game.player.animation_full.animationList)-1:
+AttributeError: 'Character' object has no attribute 'animation_full'
+
+
+
+
+============Sun May 21 20:37:56 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 25, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 32, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 62, in character_movement
+    game.monsters[-1].hit()
+TypeError: hit() missing 1 required positional argument: 'atknum'
+
+
+
+
+============Sun May 21 20:59:37 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    game.mouse.log(game)
+  File "D:\Python环境\Frog_Adventure\props\mouse.py", line 29, in log
+    if game.monsters[-1].balls["ATK"].appear:
+AttributeError: 'Game' object has no attribute 'monsters'
+
+
+
+
+============Sun May 21 21:23:47 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 73, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 129, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Sun May 21 21:25:04 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 73, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 130, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Sun May 21 21:26:07 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 73, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 130, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Sun May 21 21:27:43 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 74, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 130, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Sun May 21 21:28:13 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 74, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 130, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Sun May 21 21:29:50 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 74, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 130, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Sun May 21 21:33:03 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 74, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 130, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Sun May 21 21:34:30 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 74, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 130, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Sun May 21 21:35:09 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 28, in __init__
+    image_rendering(self)  # 游戏图像绘制
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 10, in image_rendering
+    character_rendering(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\imageRendering.py", line 32, in character_rendering
+    ball.update_image()
+  File "D:\Python环境\Frog_Adventure\props\ball.py", line 74, in update_image
+    scaled_image = self.animation_temp.play(self.image)
+  File "D:\Python环境\Frog_Adventure\buildingTool\animation.py", line 130, in play
+    return transform.scale(data.copy(), self.animationList[self.curFrame])
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:02:31 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 91, in character_movement
+    action = game.cur_actionlist[game.cur_action]
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:03:32 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 91, in character_movement
+    action = game.cur_actionlist[game.cur_action]
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:04:32 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 92, in character_movement
+    action = game.cur_actionlist[game.cur_action]
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:05:40 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 92, in character_movement
+    action = game.cur_actionlist[game.cur_action]
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:06:16 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 92, in character_movement
+    action = game.cur_actionlist[game.cur_action]
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:06:56 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 92, in character_movement
+    action = game.cur_actionlist[game.cur_action]
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:08:32 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 121, in character_movement
+    actions = game.monsters[game.cur_monster].action
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:09:30 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 122, in character_movement
+    actions = game.monsters[game.cur_monster].action
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:10:41 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 122, in character_movement
+    actions = game.monsters[game.cur_monster].action
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:24:03 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 54, in character_movement
+    game.monsters[game.cur_monster].play()
+IndexError: list index out of range
+
+
+
+
+============Tue May 23 16:50:09 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset()
+TypeError: round_reset() missing 1 required positional argument: 'game'
+
+
+
+
+============Tue May 23 16:50:31 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 138, in round_reset
+    dice.shift_place("bag")
+  File "D:\Python环境\Frog_Adventure\props\dice.py", line 122, in shift_place
+    Dice.places[self.where].take_out_dice(self)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 105, in take_out_dice
+    self.dice_list[self.dice_list.index(dice)] = None
+ValueError: <Dice Sprite(in 1 groups)> is not in list
+
+
+
+
+============Tue May 23 16:56:14 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 137, in round_reset
+    print(table.dic_list,'\n',dice)
+AttributeError: 'TableMain' object has no attribute 'dic_list'
+
+
+
+
+============Tue May 23 16:56:43 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 139, in round_reset
+    dice.shift_place("bag")
+  File "D:\Python环境\Frog_Adventure\props\dice.py", line 122, in shift_place
+    Dice.places[self.where].take_out_dice(self)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 105, in take_out_dice
+    self.dice_list[self.dice_list.index(dice)] = None
+ValueError: <Dice Sprite(in 1 groups)> is not in list
+
+
+
+
+============Tue May 23 17:00:10 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 142, in round_reset
+    dice.shift_place("bag")
+  File "D:\Python环境\Frog_Adventure\props\dice.py", line 125, in shift_place
+    Dice.places[self.where].take_out_dice(self)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 105, in take_out_dice
+    self.dice_list[self.dice_list.index(dice)] = None
+ValueError: <Dice Sprite(in 1 groups)> is not in list
+
+
+
+
+============Tue May 23 17:00:55 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 143, in round_reset
+    dice.shift_place("bag")
+  File "D:\Python环境\Frog_Adventure\props\dice.py", line 125, in shift_place
+    Dice.places[self.where].take_out_dice(self)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 105, in take_out_dice
+    self.dice_list[self.dice_list.index(dice)] = None
+ValueError: <Dice Sprite(in 1 groups)> is not in list
+
+
+
+
+============Tue May 23 17:03:10 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 144, in round_reset
+    dice.shift_place("bag")
+  File "D:\Python环境\Frog_Adventure\props\dice.py", line 125, in shift_place
+    Dice.places[self.where].take_out_dice(self)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 105, in take_out_dice
+    self.dice_list[self.dice_list.index(dice)] = None
+ValueError: <Dice Sprite(in 1 groups)> is not in list
+
+
+
+
+============Tue May 23 17:03:56 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 144, in round_reset
+    dice.shift_place("bag")
+  File "D:\Python环境\Frog_Adventure\props\dice.py", line 125, in shift_place
+    Dice.places[self.where].take_out_dice(self)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 105, in take_out_dice
+    self.dice_list[self.dice_list.index(dice)] = None
+ValueError: <Dice Sprite(in 1 groups)> is not in list
+
+
+
+
+============Tue May 23 17:06:26 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 144, in round_reset
+    dice.shift_place("bag")
+  File "D:\Python环境\Frog_Adventure\props\dice.py", line 125, in shift_place
+    Dice.places[self.where].take_out_dice(self)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 107, in take_out_dice
+    self.dice_list[self.dice_list.index(dice)] = None
+ValueError: <Dice Sprite(in 1 groups)> is not in list
+
+
+
+
+============Tue May 23 17:07:20 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 144, in round_reset
+    dice.shift_place("bag")
+  File "D:\Python环境\Frog_Adventure\props\dice.py", line 125, in shift_place
+    Dice.places[self.where].take_out_dice(self)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 108, in take_out_dice
+    self.dice_list[self.dice_list.index(dice)] = None
+ValueError: <Dice Sprite(in 1 groups)> is not in list
+
+
+
+
+============Tue May 23 17:10:15 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 139, in round_reset
+    table.calculate()
+TypeError: calculate() missing 1 required positional argument: 'game'
+
+
+
+
+============Tue May 23 17:10:46 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 138, in round_reset
+    diceTable.round_init(self)
+  File "D:\Python环境\Frog_Adventure\props\diceTable.py", line 30, in round_init
+    dice = bag.take_out_dice()
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 71, in take_out_dice
+    index = randint(0, self.remain - 1)
+  File "D:\Anaconda\lib\random.py", line 248, in randint
+    return self.randrange(a, b+1)
+  File "D:\Anaconda\lib\random.py", line 226, in randrange
+    raise ValueError("empty range for randrange() (%d, %d, %d)" % (istart, istop, width))
+ValueError: empty range for randrange() (0, 0, 0)
+
+
+
+
+============Tue May 23 17:11:53 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 129, in character_movement
+    game.bag1.round_reset(game)
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 138, in round_reset
+    diceTable.round_init(self)
+  File "D:\Python环境\Frog_Adventure\props\diceTable.py", line 30, in round_init
+    dice = bag.take_out_dice()
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 71, in take_out_dice
+    index = randint(0, self.remain - 1)
+  File "D:\Anaconda\lib\random.py", line 248, in randint
+    return self.randrange(a, b+1)
+  File "D:\Anaconda\lib\random.py", line 226, in randrange
+    raise ValueError("empty range for randrange() (%d, %d, %d)" % (istart, istop, width))
+ValueError: empty range for randrange() (0, 0, 0)
+
+
+
+
+============Tue May 23 17:21:48 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 26, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 36, in level_page
+    if game.monster_num: # 战斗未结束
+AttributeError: 'Game' object has no attribute 'monster_num'
+
+
+
+
+============Tue May 23 23:07:16 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 24, in __init__
+    game_init(self)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 31, in game_init
+    game.characters = character_init(data['character'], img['character'])
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 65, in character_init
+    data[characterName]['action']
+KeyError: 'action'
+
+
+
+
+============Tue May 23 23:10:12 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 24, in __init__
+    game_init(self)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 31, in game_init
+    game.characters = character_init(data['character'], img['character'])
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 66, in character_init
+    data[characterName]['action']
+KeyError: 'action'
+
+
+
+
+============Tue May 23 23:11:03 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 24, in __init__
+    game_init(self)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 31, in game_init
+    game.characters = character_init(data['character'], img['character'])
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 67, in character_init
+    data[characterName]['action']
+KeyError: 'action'
+
+
+
+
