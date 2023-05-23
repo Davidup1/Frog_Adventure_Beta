@@ -130,7 +130,11 @@ def online_init(game, mode):
     else:
         game.cur_level += 1
     game.roundFinish = False
+    level_pos = game.level_data['level_pos']
     game.monsters = [game.characters["frog"].copy()]
+    print(game.monsters[0].rect.topleft)
+    game.monsters[0].set_pos(level_pos[0][0])
+    print(game.monsters[0].rect.topleft)
     round_init(game)
 
 def round_init(game):

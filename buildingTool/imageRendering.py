@@ -34,6 +34,8 @@ def character_rendering(game):
             game.screen.blit(monster.gif.gif(), monster.rect.topleft)  # 怪物
     if game.status == "online":
         # 这里去game_init里面添加对手玩家
+        for monster in game.monsters:
+            game.screen.blit(monster.gif.gif(), monster.rect.topleft)  # 怪物
         pass
 
 
