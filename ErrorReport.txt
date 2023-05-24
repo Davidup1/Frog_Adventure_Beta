@@ -1102,3 +1102,45 @@ KeyError: 'action'
 
 
 
+============Tue May 23 23:20:27 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 28, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 34, in level_page
+    for monster in game.monsters:
+AttributeError: 'Game' object has no attribute 'monsters'
+
+
+
+
+============Tue May 23 23:21:33 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 28, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 34, in level_page
+    for monster in game.monsters:
+AttributeError: 'Game' object has no attribute 'monsters'
+
+
+
+
+============Wed May 24 20:30:16 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 28, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 34, in level_page
+    for monster in game.monsters:
+AttributeError: 'Game' object has no attribute 'monsters'
+
+
+
+

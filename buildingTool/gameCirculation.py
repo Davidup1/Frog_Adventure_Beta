@@ -35,7 +35,7 @@ def level_page(game):
         if monster.balls["HP"].death:
             game.monsters.remove(monster)
             game.monster_num = len(game.monsters)
-    game.level_complete = game.monster_num==0
+    game.level_complete = game.monster_num==0 and game.flag[0]=="monster"
     if game.level_complete:  # 战斗结束
         choose_perk(game)
     else:  # 战斗未结束
@@ -135,6 +135,7 @@ def character_movement(game):
                     game.cur_action += 1
             else:
                 game.cur_monster -= 1
+                game.delay = 20
                 if game.cur_monster >= -game.monster_num:
                     actions = game.monsters[game.cur_monster].action
                     game.cur_actionlist = actions[randint(0, len(actions) - 1)]
