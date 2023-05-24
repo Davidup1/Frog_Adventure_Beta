@@ -3,7 +3,7 @@ import socket
 
 server = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
 
-server.bind(('127.0.0.1', 8888))
+server.bind(('127.0.0.1', 65500))
 
 server.listen(5)
 

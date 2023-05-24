@@ -2,7 +2,7 @@ import socket
 
 client = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
 
-client.connect(('127.0.0.1', 8888))
+client.connect(('127.0.0.1', 65500))
 
 while True:
     inputStream = input('>>>:').strip()
