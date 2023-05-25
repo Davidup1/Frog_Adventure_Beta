@@ -171,7 +171,7 @@ class TableBtn(Sprite):
             game.tableGroup.tableMain.animation.quadratic(50, (1, 16), 7)
             self.animation.quadratic(50, (1, 16), 7)
             game.delay = 60
-            game.flag[:] = ["player","attack"]
+            game.flag = ["player","attack"]
             for dice in game.bag1.all_dices:
                 if dice.where != "bag":
                     dice.able = False

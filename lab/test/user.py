@@ -6,10 +6,10 @@ if __name__ == '__main__':
 
     tcp_client_1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    # 2 通过客户端套接字的connect方法与服务器套接字建立连接  
+    # 2 通过客户端套接字的connect方法与服务器套接字建立连接
     # 参数介绍：前面的ip地址代表服务器的ip地址，后面的61234代表服务端的端口号 。
 
-    tcp_client_1.connect(("192.168.96.239", 61234))
+    tcp_client_1.connect(("192.168.96.135", 61234))
 
     # 将编号好的数据存到变量send_data中，注：encode(encoding='utf-8)是将数据转换成utf-8的格式发送给服务器
     send_data = "你好，服务器，我是客户端1号".encode(encoding='utf-8')
@@ -25,4 +25,3 @@ if __name__ == '__main__':
 
     # 5 最后关闭客户端套接字连接
     tcp_client_1.close()
-

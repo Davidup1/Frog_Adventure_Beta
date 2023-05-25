@@ -18,14 +18,15 @@ def game_circulation(game):
         elif event.type == pygame.MOUSEBUTTONUP:
             game.mouse.update_button(False)
     game.mouse.update_button()
-
     if game.status == "main":
         for button in game.mainPage:
             button.eventHandle()
+    if game.status == "wait":
+        pass
     if game.status == "level":
         level_page(game)
     if game.status == "online":
-        level_page(game)
+        online_page(game)
     game.mouse.log(game)
 
 
@@ -52,10 +53,33 @@ def level_page(game):
             if game.mouse.button_up:
                 game.tableGroup.tableMain.calculate(game)
 
+def online_page(game):
+    for monster in game.monsters:
+        if monster.balls["HP"].death:
+            game.monsters.remove(monster)
+            game.monster_num = len(game.monsters)
+    game.level_complete = game.monster_num==0
+    if game.level_complete:  # 战斗结束
+        win_online(game)
+    else:  # 战斗未结束
+        if game.roundFinish:  # 回合结束
+            game.tableGroup.eventHandle(game)
+            character_movement(game)
+        else:  # 回合未结束
+            game.tableGroup.eventHandle(game)
+            game.bag1.event_handle(game.mouse)
+            game.bag2.event_handle(game.mouse)
+            for dice in game.bag1.all_dices:
+                dice.eventHandle(game.mouse)
+            game.diceTable.eventHandle(game)
+            if game.mouse.button_up:
+                game.tableGroup.tableMain.calculate(game)
 
-
+# 伤害数值
 attacks = {"attack_s":(1,2),"attack":(1,3),"attack_b":(2,4),"attack_h":(4,7)}
+# 防御数值
 defences = {"defence":(1,3)}
+# 治疗数值
 heals = {"heal":(1,3)}
 
 
@@ -65,7 +89,7 @@ def character_movement(game):
         game.player.play()
         game.monsters[game.cur_monster].play()
         if not game.delay:
-            if game.flag[:] == ["player", "attack"]:
+            if game.flag == ["player", "attack"]:
                 if game.monsters[-1].get_point("ATK"):
                     game.player.attack()
     else:
@@ -95,57 +119,62 @@ def character_movement(game):
                     game.player.add_hp()
                     game.player.jump()
                     game.delay = 20
-                game.flag[:] = ["monster", "attack"]
+                game.flag = ["monster", "attack"]
                 game.attack_flag = 1
                 actions = game.monsters[game.cur_monster].action
                 game.cur_actionlist = actions[randint(0,len(actions)-1)]
                 game.cur_action = 0
         elif game.flag[0] == "monster":
-            if game.cur_action < len(game.cur_actionlist):
-                action = game.cur_actionlist[game.cur_action]
-                monster = game.monsters[game.cur_monster]
-                if action in attacks.keys():
-                    if game.attack_flag:
-                        game.attack_flag = 0
-                        monster.attack()
-                    game.player.play()
-                    monster.play()
-                    if monster.animation.curFrame == len(monster.animation.animationList) - 1:
-                        num = attacks[action]
-                        game.player.hit(randint(num[0],num[1]))
-                    if monster.animation.finish:
-                        game.attack_flag = 1
-                        game.delay = 10
-                        game.cur_action += 1
-                elif action in defences.keys():
-                    game.delay = 30
-                    num = defences[action]
-                    monster.jump()
-                    monster_sel = game.monsters[randint(0,game.monster_num-1)]
-                    para = randint(num[0],num[1])
-                    monster_sel.delay_func(monster_sel.add_arm,para,15)
-                    game.cur_action += 1
-                else:
-                    game.delay = 30
-                    num = heals[action]
-                    monster.jump()
-                    monster_sel = game.monsters[randint(0, game.monster_num - 1)]
-                    para = randint(num[0], num[1])
-                    monster_sel.delay_func(monster_sel.add_hp, para, 15)
-                    game.cur_action += 1
+            if game.status == "online":
+                pass
             else:
-                game.cur_monster -= 1
-                game.delay = 20
-                if game.cur_monster >= -game.monster_num:
-                    actions = game.monsters[game.cur_monster].action
-                    game.cur_actionlist = actions[randint(0, len(actions) - 1)]
-                    game.cur_action = 0
+                if game.cur_action < len(game.cur_actionlist):
+                    action = game.cur_actionlist[game.cur_action]
+                    monster = game.monsters[game.cur_monster]
+                    if action in attacks.keys():
+                        if game.attack_flag:
+                            game.attack_flag = 0
+                            monster.attack()
+                        game.player.play()
+                        monster.play()
+                        if monster.animation.curFrame == len(monster.animation.animationList) - 1:
+                            num = attacks[action]
+                            game.player.hit(randint(num[0],num[1]))
+                        if monster.animation.finish:
+                            game.attack_flag = 1
+                            game.delay = 10
+                            game.cur_action += 1
+                    elif action in defences.keys():
+                        game.delay = 30
+                        num = defences[action]
+                        monster.jump()
+                        monster_sel = game.monsters[randint(0,game.monster_num-1)]
+                        para = randint(num[0],num[1])
+                        monster_sel.delay_func(monster_sel.add_arm,para,15)
+                        game.cur_action += 1
+                    else:
+                        game.delay = 30
+                        num = heals[action]
+                        monster.jump()
+                        monster_sel = game.monsters[randint(0, game.monster_num - 1)]
+                        para = randint(num[0], num[1])
+                        monster_sel.delay_func(monster_sel.add_hp, para, 15)
+                        game.cur_action += 1
                 else:
-                    game.roundFinish = False
-                    game.cur_monster = -1
-                    game.tableGroup.back()
-                    game.bag1.round_reset(game)
+                    game.cur_monster -= 1
+                    if game.cur_monster >= -game.monster_num:
+                        actions = game.monsters[game.cur_monster].action
+                        game.cur_actionlist = actions[randint(0, len(actions) - 1)]
+                        game.cur_action = 0
+                    else:
+                        game.roundFinish = False
+                        game.cur_monster = -1
+                        game.tableGroup.back()
+                        game.bag1.round_reset(game)
 
 
 def choose_perk(game):
+    pass
+
+def win_online(game):
     pass

@@ -10,7 +10,7 @@ if __name__ == '__main__':
     tcp_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
 
     # 给客户端绑定端口号，客户端需要知道服务器的端口号才能进行建立连接。IP地址不用设置，默认就为本机的IP地址。
-    tcp_server.bind(("192.168.96.239", 61234))
+    tcp_server.bind(("192.168.96.135", 61234))
 
     # 设置监听
     # 128:最大等待建立连接的个数， 提示： 目前是单任务的服务端，同一时刻只能服务与一个客户端，后续使用多任务能够让服务端同时服务与多个客户端

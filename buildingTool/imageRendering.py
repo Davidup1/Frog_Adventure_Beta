@@ -42,9 +42,16 @@ def character_rendering(game):
                     game.screen.blit(ball.image, ball.rect.topleft)
     if game.status == "online":
         # 这里去game_init里面添加对手玩家
+        for ball in game.player.balls.values():
+            ball.update_image()
+            if ball.show:
+                game.screen.blit(ball.image, ball.rect.topleft)
         for monster in game.monsters:
             game.screen.blit(monster.gif.gif(), monster.rect.topleft)  # 怪物
-        pass
+            for ball in monster.balls.values():
+                ball.update_image()
+                if ball.show:
+                    game.screen.blit(ball.image, ball.rect.topleft)
 
 
 def table_rendering(game):

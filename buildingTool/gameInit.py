@@ -95,6 +95,7 @@ def level(game):
 
 def online(game):
     game.status = "online"
+    online_init(game, "online")
 
 def settings(game):
     game.status = "settings"
@@ -129,21 +130,24 @@ def level_init(game, mode="none"):
     # 按y轴位置升序排序以便绘制
     game.monsters.sort(key=lambda mob: mob.rect.topleft[1])
     round_init(game)
-    game.flag = ["",""]
+    game.flag = ["",""] # 控制角色动作流程
     game.monster_num = len(game.monsters)
     game.cur_monster = -1
 
 def online_init(game, mode):
-    if mode == "init":
+    if mode == "online":
         game.cur_level = 1
     else:
         game.cur_level += 1
     game.roundFinish = False
+    game.player.init_ball()
     level_pos = game.level_data['level_pos']
     game.monsters = [game.characters["frog_online"].copy()]
-    print(game.monsters[0].rect.topleft)
     game.monsters[0].set_pos(level_pos[0][0])
-    print(game.monsters[0].rect.topleft)
+    game.monster_num = len(game.monsters)
+    game.monsters[0].init_ball()
+    game.flag = ["", ""]
+    game.cur_monster = 0
     round_init(game)
 
 def round_init(game):
