@@ -29,10 +29,8 @@ class NetConnection:
     def getIP(self):
         import socket
         self.hostname = socket.gethostname()
-        IPList = socket.gethostbyname_ex(self.hostname)[2]
-        for i in IPList:
-            if i != '2.0.0.1':
-                return i
+        IP = socket.gethostbyname_ex(self.hostname)[2][0]
+        return IP
 
     def broadcast(self):
 
@@ -57,16 +55,10 @@ class NetConnection:
         count = 0
         while True:
             data, address = self.u.recvfrom(1024)
-            if data == b"This is broadcase message from lyj !" and count == 0:
-                tmpIP = address[0]
-                print(tmpIP)
-                count += 1
-            if data == b"This is broadcase message from lyj !":
+            if data == b"This is broadcase message from lyj !" and address[0]!= self.IP:
                 self.targetIP = address[0]
-                if self.targetIP != tmpIP:
-                    break
-        self.targetIP = address[0]
-        print(self.targetIP)
+                print(self.targetIP)
+                break
         self.page.destroy()
 
     # def wait_for_connection(self,game):
