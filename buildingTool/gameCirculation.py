@@ -1,7 +1,9 @@
 import sys
 import pygame
 from random import randint
-
+import socket
+from socket import *
+import threading
 
 def game_circulation(game):
     game.mouse.click = False

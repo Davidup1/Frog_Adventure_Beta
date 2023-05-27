@@ -1144,3 +1144,19 @@ AttributeError: 'Game' object has no attribute 'monsters'
 
 
 
+============Sat May 27 00:30:07 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 29, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 29, in game_circulation
+    level_page(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 47, in level_page
+    character_movement(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 100, in character_movement
+    if game.monsters[-1].get_point("ATK"):
+IndexError: list index out of range
+
+
+
+

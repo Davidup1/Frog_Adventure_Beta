@@ -2,6 +2,8 @@ from os import listdir
 from json import load as json_load
 from pygame.image import load as img_load
 from pygame.sprite import Group
+
+from buildingTool.NetConnection import NetConnection
 from buildingTool.gifBuilding import GifBuilder
 from props.character import Character
 from props.mouse import Mouse
@@ -135,6 +137,7 @@ def level_init(game, mode="none"):
     game.cur_monster = -1
 
 def online_init(game, mode):
+    search_win = NetConnection()
     if mode == "online":
         game.cur_level = 1
     else:
