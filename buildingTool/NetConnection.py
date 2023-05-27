@@ -45,7 +45,10 @@ class NetConnection:
         self.cnt += 1
         if self.cnt == 10:
             self.u.settimeout(10)
-            self.search()
+            try:
+                self.search()
+            except:
+                pass
         else:
             self.page.after(100, self.broadcast)
 
