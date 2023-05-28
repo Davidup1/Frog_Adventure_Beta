@@ -16,6 +16,9 @@ from props.button import Button
 from props.ball import Ball
 from random import randint
 
+import threading
+from socket import *
+
 
 def game_init(game):
     img = load_img_dir('./image')
@@ -136,8 +139,12 @@ def level_init(game, mode="none"):
     game.monster_num = len(game.monsters)
     game.cur_monster = -1
 
+
 def online_init(game, mode):
     search_win = NetConnection()
+    game.targetIP = search_win.targetIP
+    online_edge_init(game)
+    game.onlineListen = threading.Thread()
     if mode == "online":
         game.cur_level = 1
     else:
@@ -152,6 +159,21 @@ def online_init(game, mode):
     game.flag = ["", ""]
     game.cur_monster = 0
     round_init(game)
+
+
+def online_edge_init(game):
+    game.broadcast = socket(AF_INET, SOCK_DGRAM)
+    game.broadcast.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+    game.listener = socket(AF_INET, SOCK_DGRAM)
+    game.listener.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+    game.listener.bind(game.targetIP)
+    game.listener.settimeout(1)
+    game.IP = gethostbyname_ex(gethostname())[2][0]
+
+
+def online_listen_post(game):
+
+    pass
 
 def round_init(game):
     game.diceTable.round_init(game.bag1)
