@@ -2,6 +2,7 @@ from pygame.sprite import Sprite
 from pygame.sprite import Group
 from buildingTool.animation import Animation
 import pygame
+import json
 
 FLOAT_DURATION = 180
 
@@ -177,7 +178,13 @@ class TableBtn(Sprite):
                     dice.able = False
                     dice.update_image()
                 # print(dice.type, dice.where, dice.able)
+        if game.status == "online":
+            self.sendSum(game,game.tableGroup.tableMain.sum)
 
+
+    def sendSum(self,game, sum):
+        message = json.dumps(sum)
+        game.broadcast.sendto(message.encode('utf-8'), (game.targetIP, 10131))
 
 class Table(Group):
     def __init__(self, img, point_card):

@@ -20,6 +20,8 @@ class Game:
         self.game_frame_cnt = 0
         self.cur_level = None
         self.delay = 0
+        self.selfAction = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
+        self.opponentAction = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
         try:
             game_init(self)
 

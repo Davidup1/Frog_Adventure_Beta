@@ -143,8 +143,10 @@ def level_init(game, mode="none"):
 def online_init(game, mode):
     search_win = NetConnection()
     game.targetIP = search_win.targetIP
+    print("捕获到的IP:",game.targetIP)
     online_edge_init(game)
-    game.onlineListen = threading.Thread()
+    game.onlineListen = threading.Thread(target=online_listen, args=(game, ))
+    game.onlineListen.start()
     if mode == "online":
         game.cur_level = 1
     else:
@@ -166,13 +168,20 @@ def online_edge_init(game):
     game.broadcast.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
     game.listener = socket(AF_INET, SOCK_DGRAM)
     game.listener.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-    game.listener.bind(game.targetIP)
-    game.listener.settimeout(1)
     game.IP = gethostbyname_ex(gethostname())[2][0]
+    game.listener.bind((game.IP, 10131))
+    game.listener.settimeout(0.1)
 
 
-def online_listen_post(game):
-
+def online_listen(game):
+    while True:
+        try:
+            data, address = game.listener.recvfrom(1024)
+            if address[0] == game.targetIP:
+                game.opponentAction = json_load(data)
+                game.tableGroup.tableMain.sum = game.opponentAction
+        except Exception:
+            pass
     pass
 
 def round_init(game):
