@@ -119,7 +119,7 @@ def level_init(game, mode="none"):
     game.roundFinish = False
     game.player.init_ball()
     game.monsters = []
-    level_data = game.level_data['level_stage'][str(game.cur_level//5)]
+    level_data = game.level_data['level_stage'][str(game.cur_level//3)]
     level_pos = game.level_data['level_pos']
     monster_num = randint(level_data['monster_min'], level_data['monster_max'])  # 生成当前关卡怪物总数
     print(level_pos[monster_num - 1])

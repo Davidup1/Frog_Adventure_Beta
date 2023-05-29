@@ -30,7 +30,7 @@ def game_circulation(game):
             if event.key == pygame.K_a:
                 game.monsters[0].balls["HP"].death = True
             elif event.key == pygame.K_b:
-                game.monsters[0].balls["HP"].death = True
+                game.cur_level += 3
     game.mouse.update_button()
 
     if game.status == "main":
@@ -58,6 +58,8 @@ def level_page(game):
         game.temp_perk = gen_perk(game.perks)
         for perk in game.temp_perk:
             perk.landing()
+        game.delay = 0
+        game.player.balls["DEF"].num = 0
     game.level_complete = game.monster_num==0 and game.flag[0]=="monster"
     if game.level_complete:  # 战斗结束
         choose_perk(game)
@@ -162,31 +164,45 @@ def character_movement(game):
         elif game.flag[0] == "monster":
             if game.status == "online":
                 # 写对手的动作
-                probe = 0
-                if game.opponentAction["ATTACK"]:
-                    probe += 1
-                    game.monsters[-1].play()
-                    game.player.play()
-                    if game.monsters[-1].animation.curFrame == len(game.monsters[-1].animation.animationList) - 1:
-                        game.player.hit()
-                    if game.monsters[-1].animation.finish:
+                if game.flag[1] == "attack":
+                    try:
+                        if game.patch:
+                            game.patch -= 1
+                            game.monsters[-1].play()
+                            if game.patch == 0:
+                                game.flag[1] = "defence"
+                                game.delay = 20
+                        else:
+                            if game.opponentAction["ATTACK"]:
+                                game.player.play()
+                                game.monsters[-1].play()
+                                if game.monsters[-1].animation.curFrame == len(game.monsters[-1].animation.animationList) - 1:
+                                    game.player.hit(game.opponentAction["ATTACK"])
+                                if game.monsters[-1].animation.finish:
+                                    game.opponentAction["ATTACK"] = 0
+                                    game.delay = 20
+                                    game.flag[1] = "defence"
+                            else:
+                                game.flag[1] = "defence"
+                    except IndexError:
+                        game.patch = 10
+                elif game.flag[1] == "defence":
+                    if game.opponentAction["BLOCK"]:
+                        game.monsters[-1].add_arm(game.opponentAction["BLOCK"])
+                        game.monsters[-1].jump()
+                        game.delay = 40
+                    else:
+                        game.delay = 10
+                    game.flag[1] = "heal"
+                elif game.flag[1] == "heal":
+                    if game.opponentAction["HEAL"]:
+                        game.monsters[-1].add_hp(game.opponentAction["HEAL"])
+                        game.monsters[-1].jump()
                         game.delay = 20
-                if game.opponentAction["BLOCK"]:
-                    probe += 1
-                    game.monsters[-1].add_arm()
-                    game.monsters[-1].jump()
-                    game.delay = 40
-                else:
-                    game.delay = 10
-                if game.opponentAction["HEAL"]:
-                    probe += 1
-                    game.monsters[-1].add_hp()
-                    game.monsters[-1].jump()
-                    game.delay = 20
-                if probe:
+                    game.flag[1] = "next"
+                elif game.flag[1] == "next":
                     game.roundFinish = False
-                    game.tableGroup.back()
-                    game.bag1.round_reset(game)
+
             else:
                 if game.cur_action < len(game.cur_actionlist):
                     action = game.cur_actionlist[game.cur_action]

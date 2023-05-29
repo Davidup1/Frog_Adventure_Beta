@@ -7,6 +7,42 @@
       "monster_min": 1
     },
     "1": {
+      "monsters": ["fly_normal", "moth_normal","archer_normal"],
+      "monster_weight": [1, 1,1],
+      "monster_max": 2,
+      "monster_min": 1
+    },
+    "2": {
+      "monsters": ["fly_normal", "moth_normal","archer_normal"],
+      "monster_weight": [1, 1,2],
+      "monster_max": 3,
+      "monster_min": 2
+    },
+    "3": {
+      "monsters": ["moth_normal","archer_normal","beetle_normal"],
+      "monster_weight": [1, 1,1],
+      "monster_max": 3,
+      "monster_min": 2
+    },
+    "4": {
+      "monsters": ["moth_normal","beetle_normal","archer_elite"],
+      "monster_weight": [1, 1,1],
+      "monster_max": 3,
+      "monster_min": 2
+    },
+    "5": {
+      "monsters": ["fly_normal", "moth_normal"],
+      "monster_weight": [2, 1],
+      "monster_max": 3,
+      "monster_min": 2
+    },
+    "6": {
+      "monsters": ["fly_normal", "moth_normal"],
+      "monster_weight": [2, 1],
+      "monster_max": 3,
+      "monster_min": 2
+    },
+    "7": {
       "monsters": ["fly_normal", "moth_normal"],
       "monster_weight": [2, 1],
       "monster_max": 3,
