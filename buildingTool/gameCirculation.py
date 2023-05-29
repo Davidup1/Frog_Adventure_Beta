@@ -163,45 +163,53 @@ def character_movement(game):
                     game.cur_action = 0
         elif game.flag[0] == "monster":
             if game.status == "online":
-                # 写对手的动作
-                if game.flag[1] == "attack":
-                    try:
-                        if game.patch:
-                            game.patch -= 1
-                            game.monsters[-1].play()
-                            if game.patch == 0:
-                                game.flag[1] = "defence"
-                                game.delay = 20
-                        else:
-                            if game.opponentAction["ATTACK"]:
-                                game.player.play()
+                # 写对手的动作----------------------------------------
+                if game.opponentAction_changed[0]:
+                    if game.opponentAction_changed[1]:
+                        game.monsters[-1].attack()
+                        game.opponentAction_changed[1] = False
+                    if game.flag[1] == "attack":
+                        print(game.opponentAction)
+                        try:
+                            if game.patch:
+                                game.patch -= 1
                                 game.monsters[-1].play()
-                                if game.monsters[-1].animation.curFrame == len(game.monsters[-1].animation.animationList) - 1:
-                                    game.player.hit(game.opponentAction["ATTACK"])
-                                if game.monsters[-1].animation.finish:
-                                    game.opponentAction["ATTACK"] = 0
-                                    game.delay = 20
+                                if game.patch == 0:
                                     game.flag[1] = "defence"
+                                    game.delay = 20
                             else:
-                                game.flag[1] = "defence"
-                    except IndexError:
-                        game.patch = 10
-                elif game.flag[1] == "defence":
-                    if game.opponentAction["BLOCK"]:
-                        game.monsters[-1].add_arm(game.opponentAction["BLOCK"])
-                        game.monsters[-1].jump()
-                        game.delay = 40
-                    else:
-                        game.delay = 10
-                    game.flag[1] = "heal"
-                elif game.flag[1] == "heal":
-                    if game.opponentAction["HEAL"]:
-                        game.monsters[-1].add_hp(game.opponentAction["HEAL"])
-                        game.monsters[-1].jump()
-                        game.delay = 20
-                    game.flag[1] = "next"
-                elif game.flag[1] == "next":
-                    game.roundFinish = False
+                                print('game.opponentAction["ATTACK"]',game.opponentAction["ATTACK"])
+                                if game.opponentAction["ATTACK"]:
+                                    game.player.play()
+                                    game.monsters[-1].play()
+                                    if game.monsters[-1].animation.curFrame == len(game.monsters[-1].animation.animationList) - 1:
+                                        game.player.hit(game.opponentAction["ATTACK"])
+                                    if game.monsters[-1].animation.finish:
+                                        game.opponentAction["ATTACK"] = 0
+                                        game.delay = 20
+                                        game.flag[1] = "defence"
+                                else:
+                                    game.flag[1] = "defence"
+                        except IndexError:
+                            game.patch = 10
+                    elif game.flag[1] == "defence":
+                        if game.opponentAction["BLOCK"]:
+                            game.monsters[-1].add_arm(game.opponentAction["BLOCK"])
+                            game.monsters[-1].jump()
+                            game.delay = 40
+                        else:
+                            game.delay = 10
+                        game.flag[1] = "heal"
+                    elif game.flag[1] == "heal":
+                        if game.opponentAction["HEAL"]:
+                            game.monsters[-1].add_hp(game.opponentAction["HEAL"])
+                            game.monsters[-1].jump()
+                            game.delay = 20
+                        game.flag[1] = "next"
+                    elif game.flag[1] == "next":
+                        game.roundFinish = False
+                        game.opponentAction_changed[0] = False
+                        game.tableGroup.back()
 
             else:
                 if game.cur_action < len(game.cur_actionlist):

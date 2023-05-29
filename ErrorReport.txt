@@ -286,3 +286,19 @@ IndexError: list index out of range
 
 
 
+============Tue May 30 04:02:07 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 44, in game_circulation
+    online_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 93, in online_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 181, in character_movement
+    print('game.opponentAction["ATTACK"]',game.opponentAction["ATTACK"])
+TypeError: string indices must be integers
+
+
+
+

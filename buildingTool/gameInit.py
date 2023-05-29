@@ -168,12 +168,13 @@ def online_init(game, mode):
     game.monsters[0].set_pos(level_pos[0][0])
     game.monster_num = len(game.monsters)
     game.monsters[0].init_ball()
-    game.flag = ["", ""]
+    game.flag = ["monster", "attack"]
     game.cur_monster = 0
     round_init(game)
     game.roundFinish = False if game.onlineLeader else True
     if game.roundFinish:
         game.tableGroup.tableBtn.pack_up(game)
+    game.opponentAction_changed = [False,False]
 
 
 def online_edge_init(game):
@@ -190,8 +191,10 @@ def online_listen(game):
         try:
             data, address = game.listener.recvfrom(1024)
             if address[0] == game.targetIP:
-                game.opponentAction = json_loads(data.decode('utf-8'))
-                print(game.opponentAction)
+                if type(game.opponentAction) == dict:
+                    game.opponentAction = json_loads(data.decode('utf-8'))
+                    game.opponentAction_changed = [True,True]
+                    print(type(game.opponentAction),game.opponentAction)
                 # game.tableGroup.tableMain.sum = game.opponentAction
         except Exception:
             pass
