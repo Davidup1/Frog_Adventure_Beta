@@ -22,6 +22,9 @@ class Game:
         self.delay = 0
         self.selfAction = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
         self.opponentAction = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
+        self.onlineClicked = False
+        self.threadControl = True
+        self.onlineLeader = True
         try:
             game_init(self)
 

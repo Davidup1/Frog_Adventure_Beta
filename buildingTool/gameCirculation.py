@@ -10,9 +10,14 @@ def game_circulation(game):
     for event in pygame.event.get():  # ([clientData] if game.isFightMode else pygame.event.get())
         # 关闭窗口
         if event.type == pygame.QUIT:
-            game.onlineListen.join()
-            pygame.quit()
-            sys.exit()
+            if game.onlineClicked:
+                game.threadControl = False
+                game.onlineListen.join()
+                pygame.quit()
+                sys.exit()
+            else:
+                pygame.quit()
+                sys.exit()
         elif event.type == pygame.MOUSEMOTION:
             game.mouse.rect.topleft = event.pos
         elif event.type == pygame.MOUSEBUTTONDOWN:

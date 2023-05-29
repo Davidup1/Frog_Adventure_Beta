@@ -1,4 +1,6 @@
+import json
 from os import listdir
+from json import loads as json_loads
 from json import load as json_load
 from pygame.image import load as img_load
 from pygame.sprite import Group
@@ -18,6 +20,8 @@ from random import randint
 
 import threading
 from socket import *
+from traceback import format_exc
+import random
 
 
 def game_init(game):
@@ -141,12 +145,15 @@ def level_init(game, mode="none"):
 
 
 def online_init(game, mode):
-    search_win = NetConnection()
-    game.targetIP = search_win.targetIP
+    game.onlineClicked = True
+    game.search_win = NetConnection()
+    game.targetIP = game.search_win.targetIP
     print("捕获到的IP:",game.targetIP)
     online_edge_init(game)
     game.onlineListen = threading.Thread(target=online_listen, args=(game, ))
     game.onlineListen.start()
+    select_Server(game)
+    print(game.onlineLeader)
     if mode == "online":
         game.cur_level = 1
     else:
@@ -172,16 +179,27 @@ def online_edge_init(game):
     game.listener.bind((game.IP, 10131))
     game.listener.settimeout(0.1)
 
-
 def online_listen(game):
-    while True:
+    while game.threadControl:
         try:
             data, address = game.listener.recvfrom(1024)
             if address[0] == game.targetIP:
-                game.opponentAction = json_load(data)
+                game.opponentAction = json_loads(data.decode('utf-8'))
+                print(game.opponentAction)
                 # game.tableGroup.tableMain.sum = game.opponentAction
         except Exception:
             pass
+    pass
+
+def select_Server(game):
+    game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
+    while True:
+        data, address = game.listener.recvfrom(1024)
+        if address[0] == game.targetIP:
+            tmp = json_loads(data.decode('utf-8'))
+            print(tmp)
+            if int(tmp) > game.search_win.cnt:
+                game.onlineLeader = False
     pass
 
 def round_init(game):
