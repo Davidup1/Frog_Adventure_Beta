@@ -274,3 +274,15 @@ socket.timeout: timed out
 
 
 
+============Tue May 30 02:11:37 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 31, in game_circulation
+    game.monsters[0].balls["HP"].death = True
+IndexError: list index out of range
+
+
+
+
