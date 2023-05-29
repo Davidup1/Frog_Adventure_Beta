@@ -34,16 +34,16 @@ def game_circulation(game):
                 game.cur_level += 3
             elif event.key == pygame.K_ESCAPE:
                 game.threadControl = False
-                if game.status == "online":
-                    game.onlineListen.join()
-                elif game.status == "level":
+                if game.status == "level":
                     btn = game.tableGroup.tableBtn.animation
                     if btn.curFrame==len(btn.animationList)-1:
                         game.tableGroup.tableBtn.pack_up(game,True)
                 game.status = "main"
                 game.broadcast.sendto(b"My suitcase is moved, i don't play",(game.targetIP, 10131))
     game.mouse.update_button()
-
+    if not game.threadControl:
+        if game.status == "online":
+            game.onlineListen.join()
     if game.status == "main":
         for button in game.mainPage:
             button.eventHandle()

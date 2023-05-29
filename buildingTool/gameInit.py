@@ -195,19 +195,18 @@ def online_listen(game):
         try:
             data, address = game.listener.recvfrom(1024)
             if address[0] == game.targetIP:
-                if type(json_loads(data.decode('utf-8'))) == dict:
+                if data == b"My suitcase is moved, i don't play":
+                    print("老马啊，老马")
+                    game.threadControl = False
+                    game.status = "main"
+                elif type(json_loads(data.decode('utf-8'))) == dict:
                     game.opponentAction = json_loads(data.decode('utf-8'))
                     game.opponentAction_changed = [True,True]
                     print(type(game.opponentAction),game.opponentAction)
                 # game.tableGroup.tableMain.sum = game.opponentAction
-                elif data == b"My suitcase is moved, i don't play":
-                    game.threadControl = False
-                    game.broadcast.sendto(b"My suitcase is moved, i don't play", (game.targetIP, 10131))
-                    if game.status == "online":
-                        game.onlineListen.join()
-                    game.status = "main"
+
         except Exception:
-            pass
+            print(format_exc())
     pass
 
 def select_Server(game):
