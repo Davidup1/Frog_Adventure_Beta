@@ -86,7 +86,7 @@ def online_page(game):
     if game.level_complete:  # 战斗结束
         win_online(game)
     else:  # 战斗未结束
-        if game.roundFinish:  # 回合结束
+        if game.roundFinish:
             game.tableGroup.eventHandle(game)
             character_movement(game)
         else:  # 回合未结束
@@ -162,27 +162,28 @@ def character_movement(game):
         elif game.flag[0] == "monster":
             if game.status == "online":
                 # 写对手的动作
-                if game.flag[1] == "attack":
-                    game.player.play()
+                probe = 0
+                if game.opponentAction["ATTACK"]:
+                    probe += 1
                     game.monsters[-1].play()
-                    if not game.opponentAction["ATTACK"]:
+                    game.player.play()
+                    if game.monsters[-1].animation.curFrame == len(game.monsters[-1].animation.animationList) - 1:
                         game.player.hit()
                     if game.monsters[-1].animation.finish:
                         game.delay = 20
-                        game.flag[1] = "defence"
-                elif game.flag[1] == "defence":
-                    if not game.opponentAction["BLOCK"]:
-                        game.monsters[-1].add_arm()
-                        game.monsters[-1].jump()
-                        game.delay = 40
-                    else:
-                        game.delay = 10
-                    game.flag[1] = "heal"
-                elif game.flag[1] == "heal":
-                    if not game.opponentAction["HEAL"]:
-                        game.monsters[-1].add_hp()
-                        game.monsters[-1].jump()
-                        game.delay = 20
+                if game.opponentAction["BLOCK"]:
+                    probe += 1
+                    game.monsters[-1].add_arm()
+                    game.monsters[-1].jump()
+                    game.delay = 40
+                else:
+                    game.delay = 10
+                if game.opponentAction["HEAL"]:
+                    probe += 1
+                    game.monsters[-1].add_hp()
+                    game.monsters[-1].jump()
+                    game.delay = 20
+                if probe:
                     game.roundFinish = False
                     game.tableGroup.back()
                     game.bag1.round_reset(game)
