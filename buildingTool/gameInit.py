@@ -155,9 +155,9 @@ def online_init(game, mode):
     game.targetIP = game.search_win.targetIP
     print("捕获到的IP:",game.targetIP)
     online_edge_init(game)
+    select_Server(game)
     game.onlineListen = threading.Thread(target=online_listen, args=(game, ))
     game.onlineListen.start()
-    select_Server(game)
     print(game.onlineLeader)
     if mode == "online":
         game.cur_level = 1
@@ -199,13 +199,19 @@ def online_listen(game):
 def select_Server(game):
     game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
     while True:
-        data, address = game.listener.recvfrom(1024)
-        if address[0] == game.targetIP:
-            tmp = json_loads(data.decode('utf-8'))
-            print(tmp)
-            if int(tmp) > game.search_win.cnt:
-                game.onlineLeader = False
+        try:
+            data, address = game.listener.recvfrom(1024)
+            if address[0] == game.targetIP:
+                tmp = json_loads(data.decode('utf-8'))
+                print(tmp)
+                if int(tmp) > game.search_win.cnt:
+                    game.onlineLeader = False
+            break
+        except Exception:
+            pass
     pass
 
 def round_init(game):
     game.diceTable.round_init(game.bag1)
+    if game.status == "online":
+        game.roundFinish = False if game.onlineLeader else True

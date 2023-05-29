@@ -186,3 +186,47 @@ AttributeError: 'Game' object has no attribute 'onlineListen'
 
 
 
+============Tue May 30 01:25:02 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 36, in game_circulation
+    button.eventHandle()
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 110, in online
+    online_init(game, "online")
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 160, in online_init
+    select_Server(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 200, in select_Server
+    game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+
+
+
+============Tue May 30 01:25:12 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 36, in game_circulation
+    button.eventHandle()
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 110, in online
+    online_init(game, "online")
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 160, in online_init
+    select_Server(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 202, in select_Server
+    data, address = game.listener.recvfrom(1024)
+socket.timeout: timed out
+
+
+
+
