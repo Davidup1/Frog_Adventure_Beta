@@ -302,3 +302,63 @@ TypeError: string indices must be integers
 
 
 
+============Tue May 30 04:11:53 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 44, in game_circulation
+    online_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 93, in online_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 181, in character_movement
+    print('game.opponentAction["ATTACK"]',game.opponentAction["ATTACK"])
+TypeError: string indices must be integers
+
+
+
+
+============Tue May 30 04:32:52 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 42, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 109, in online
+    online_init(game, "online")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 159, in online_init
+    select_Server(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 206, in select_Server
+    game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+
+
+
+============Tue May 30 04:34:03 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 42, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 109, in online
+    online_init(game, "online")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 159, in online_init
+    select_Server(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 206, in select_Server
+    game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+
+
+

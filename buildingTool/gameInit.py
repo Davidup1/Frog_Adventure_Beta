@@ -150,6 +150,8 @@ def level_init(game, mode="none"):
 
 def online_init(game, mode):
     game.onlineClicked = True
+    game.threadControl = True
+    game.onlineLeader = True
     game.search_win = NetConnection()
     game.targetIP = game.search_win.targetIP
     print("捕获到的IP:",game.targetIP)
@@ -191,7 +193,7 @@ def online_listen(game):
         try:
             data, address = game.listener.recvfrom(1024)
             if address[0] == game.targetIP:
-                if type(game.opponentAction) == dict:
+                if type(json_loads(data.decode('utf-8'))) == dict:
                     game.opponentAction = json_loads(data.decode('utf-8'))
                     game.opponentAction_changed = [True,True]
                     print(type(game.opponentAction),game.opponentAction)

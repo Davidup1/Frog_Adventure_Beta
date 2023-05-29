@@ -2,6 +2,7 @@ import sys
 import pygame
 from random import randint
 from props.perk import gen_perk
+import tkinter as tk
 import socket
 from socket import *
 import threading
@@ -31,6 +32,10 @@ def game_circulation(game):
                 game.monsters[0].balls["HP"].death = True
             elif event.key == pygame.K_b:
                 game.cur_level += 3
+            elif event.key == pygame.K_ESCAPE:
+                game.status = "main"
+                game.threadControl = False
+                game.onlineListen.join()
     game.mouse.update_button()
 
     if game.status == "main":
@@ -80,13 +85,11 @@ def level_page(game):
                 game.tableGroup.tableMain.calculate(game)
 
 def online_page(game):
-    for monster in game.monsters:
-        if monster.balls["HP"].death:
-            game.monsters.remove(monster)
-            game.monster_num = len(game.monsters)
-    game.level_complete = game.monster_num==0
+    is_win = game.monster[-1].balls["HP"].num == 0
+    game.level_complete = is_win or game.player.balls["HP"].num==0
+
     if game.level_complete:  # 战斗结束
-        win_online(game)
+        win_online(game,is_win)
     else:  # 战斗未结束
         if game.roundFinish:
             game.tableGroup.eventHandle(game)
@@ -210,6 +213,7 @@ def character_movement(game):
                         game.roundFinish = False
                         game.opponentAction_changed[0] = False
                         game.tableGroup.back()
+                        game.bag1.round_reset(game)
 
             else:
                 if game.cur_action < len(game.cur_actionlist):
@@ -262,5 +266,25 @@ def choose_perk(game):
         perk.eventHandle(game)
     pass
 
-def win_online(game):
+def win_online(game,is_win):
+    root = tk.Tk()
+    r_w = 600
+    r_h = 350
+    s_w = root.winfo_screenwidth()
+    s_h = root.winfo_screenheight()
+    x = round((s_w - r_w) / 2)
+    y = round((s_h - r_h) / 2)
+
+    root.geometry('%dx%d+%d+%d' % (r_w, r_h, x, y))
+    root.update()
+    root.title("Error")
+    frame1 = tk.Frame(root, bd=5)
+    frame1.pack()
+    label1 = tk.Label(frame1, text="你赢了！" if is_win else "你输了！", font=("微软雅黑",14))
+    label1.pack()
+    root.mainloop()
+
+    game.status = "main"
+    game.threadControl = False
+    game.onlineListen.join()
     pass

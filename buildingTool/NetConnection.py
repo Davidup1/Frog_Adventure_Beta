@@ -44,7 +44,7 @@ class NetConnection:
         print("send and recv")
         print(self.cnt)
         self.cnt += 1
-        if self.cnt == 10:
+        if self.cnt == 100:
             self.u.settimeout(1)
             try:
                 self.search()
