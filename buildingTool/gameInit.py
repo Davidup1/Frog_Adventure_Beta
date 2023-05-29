@@ -200,6 +200,12 @@ def online_listen(game):
                     game.opponentAction_changed = [True,True]
                     print(type(game.opponentAction),game.opponentAction)
                 # game.tableGroup.tableMain.sum = game.opponentAction
+                elif data == b"My suitcase is moved, i don't play":
+                    game.threadControl = False
+                    game.broadcast.sendto(b"My suitcase is moved, i don't play", (game.targetIP, 10131))
+                    if game.status == "online":
+                        game.onlineListen.join()
+                    game.status = "main"
         except Exception:
             pass
     pass

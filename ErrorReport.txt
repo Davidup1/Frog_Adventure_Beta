@@ -286,6 +286,54 @@ IndexError: list index out of range
 
 
 
+============Tue May 30 03:53:30 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 44, in game_circulation
+    online_page(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 93, in online_page
+    character_movement(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 176, in character_movement
+    if game.opponentAction["ATTACK"]:
+TypeError: string indices must be integers
+
+
+
+
+============Tue May 30 03:57:02 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 44, in game_circulation
+    online_page(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 93, in online_page
+    character_movement(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 176, in character_movement
+    if game.opponentAction["ATTACK"]:
+TypeError: string indices must be integers
+
+
+
+
+============Tue May 30 04:04:47 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 44, in game_circulation
+    online_page(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 93, in online_page
+    character_movement(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 176, in character_movement
+    if game.opponentAction["ATTACK"]:
+TypeError: string indices must be integers
+
+
+
+
 ============Tue May 30 04:02:07 2023============
 
 Traceback (most recent call last):
@@ -298,6 +346,28 @@ Traceback (most recent call last):
   File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 181, in character_movement
     print('game.opponentAction["ATTACK"]',game.opponentAction["ATTACK"])
 TypeError: string indices must be integers
+
+
+
+
+============Tue May 30 04:34:20 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 38, in game_circulation
+    button.eventHandle()
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 109, in online
+    online_init(game, "online")
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 157, in online_init
+    select_Server(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 204, in select_Server
+    game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
+socket.gaierror: [Errno 11001] getaddrinfo failed
 
 
 
@@ -362,6 +432,64 @@ socket.gaierror: [Errno 11001] getaddrinfo failed
 
 
 
+============Tue May 30 04:49:28 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 49, in game_circulation
+    online_page(game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 88, in online_page
+    is_win = game.monster[-1].balls["HP"].num == 0
+AttributeError: 'Game' object has no attribute 'monster'
+
+
+
+
+============Tue May 30 04:50:41 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 43, in game_circulation
+    button.eventHandle()
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 109, in online
+    online_init(game, "online")
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 155, in online_init
+    game.search_win = NetConnection()
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\NetConnection.py", line 18, in __init__
+    self.u.bind(self.searchAddress)
+OSError: [WinError 10048] 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+
+
+
+
+============Tue May 30 04:55:23 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 43, in game_circulation
+    button.eventHandle()
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 109, in online
+    online_init(game, "online")
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameInit.py", line 155, in online_init
+    game.search_win = NetConnection()
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\NetConnection.py", line 18, in __init__
+    self.u.bind(self.searchAddress)
+OSError: [WinError 10048] 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。
+
+
+
+
 ============Tue May 30 04:49:33 2023============
 
 Traceback (most recent call last):
@@ -372,6 +500,18 @@ Traceback (most recent call last):
   File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 88, in online_page
     is_win = game.monster[-1].balls["HP"].num == 0
 AttributeError: 'Game' object has no attribute 'monster'
+
+
+
+
+============Tue May 30 05:00:48 2023============
+
+Traceback (most recent call last):
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\zhuomian\课程相关2022-2023-2\程序设计\蛙蛙勇闯地牢\buildingTool\gameCirculation.py", line 38, in game_circulation
+    game.onlineListen.join()
+AttributeError: 'Game' object has no attribute 'onlineListen'
 
 
 

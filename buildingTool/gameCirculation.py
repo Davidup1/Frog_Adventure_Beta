@@ -41,6 +41,7 @@ def game_circulation(game):
                     if btn.curFrame==len(btn.animationList)-1:
                         game.tableGroup.tableBtn.pack_up(game,True)
                 game.status = "main"
+                game.broadcast.sendto(b"My suitcase is moved, i don't play",(game.targetIP, 10131))
     game.mouse.update_button()
 
     if game.status == "main":
