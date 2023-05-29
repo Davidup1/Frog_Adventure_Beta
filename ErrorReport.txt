@@ -362,3 +362,17 @@ socket.gaierror: [Errno 11001] getaddrinfo failed
 
 
 
+============Tue May 30 04:49:33 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 49, in game_circulation
+    online_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 88, in online_page
+    is_win = game.monster[-1].balls["HP"].num == 0
+AttributeError: 'Game' object has no attribute 'monster'
+
+
+
+

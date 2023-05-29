@@ -85,7 +85,7 @@ def level_page(game):
                 game.tableGroup.tableMain.calculate(game)
 
 def online_page(game):
-    is_win = game.monster[-1].balls["HP"].num == 0
+    is_win = game.monsters[-1].balls["HP"].num == 0
     game.level_complete = is_win or game.player.balls["HP"].num==0
 
     if game.level_complete:  # 战斗结束

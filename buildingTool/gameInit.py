@@ -51,6 +51,7 @@ def game_init(game):
     game.diceTable = DiceTable(img["diceTable"])
     game.perks = init_perks(img["UI"]["perk"])
     game.temp_perk = []
+    game.search_win = NetConnection()
     game.patch = 0
 
 
@@ -152,7 +153,7 @@ def online_init(game, mode):
     game.onlineClicked = True
     game.threadControl = True
     game.onlineLeader = True
-    game.search_win = NetConnection()
+    game.search_win.popup()
     game.targetIP = game.search_win.targetIP
     print("捕获到的IP:",game.targetIP)
     online_edge_init(game)

@@ -18,6 +18,7 @@ class NetConnection:
         self.u.bind(self.searchAddress)
         self.u.settimeout(0.1)
 
+    def popup(self):
         self.cnt = 0
         self.targetIP = "no user"
         self.page = tkinter.Tk()
