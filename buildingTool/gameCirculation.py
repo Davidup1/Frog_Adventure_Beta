@@ -10,6 +10,7 @@ def game_circulation(game):
     for event in pygame.event.get():  # ([clientData] if game.isFightMode else pygame.event.get())
         # 关闭窗口
         if event.type == pygame.QUIT:
+            game.onlineListen.join()
             pygame.quit()
             sys.exit()
         elif event.type == pygame.MOUSEMOTION:
@@ -128,7 +129,31 @@ def character_movement(game):
                 game.cur_action = 0
         elif game.flag[0] == "monster":
             if game.status == "online":
-                pass
+                # 写对手的动作
+                if game.flag[1] == "attack":
+                    game.player.play()
+                    game.monsters[-1].play()
+                    if not game.opponentAction["ATTACK"]:
+                        game.player.hit()
+                    if game.monsters[-1].animation.finish:
+                        game.delay = 20
+                        game.flag[1] = "defence"
+                elif game.flag[1] == "defence":
+                    if not game.opponentAction["BLOCK"]:
+                        game.monsters[-1].add_arm()
+                        game.monsters[-1].jump()
+                        game.delay = 40
+                    else:
+                        game.delay = 10
+                    game.flag[1] = "heal"
+                elif game.flag[1] == "heal":
+                    if not game.opponentAction["HEAL"]:
+                        game.monsters[-1].add_hp()
+                        game.monsters[-1].jump()
+                        game.delay = 20
+                    game.roundFinish = False
+                    game.tableGroup.back()
+                    game.bag1.round_reset(game)
             else:
                 if game.cur_action < len(game.cur_actionlist):
                     action = game.cur_actionlist[game.cur_action]

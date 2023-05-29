@@ -179,7 +179,7 @@ def online_listen(game):
             data, address = game.listener.recvfrom(1024)
             if address[0] == game.targetIP:
                 game.opponentAction = json_load(data)
-                game.tableGroup.tableMain.sum = game.opponentAction
+                # game.tableGroup.tableMain.sum = game.opponentAction
         except Exception:
             pass
     pass

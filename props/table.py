@@ -178,12 +178,13 @@ class TableBtn(Sprite):
                     dice.able = False
                     dice.update_image()
                 # print(dice.type, dice.where, dice.able)
-        if game.status == "online":
-            self.sendSum(game,game.tableGroup.tableMain.sum)
+            if game.status == "online":
+                self.sendSum(game,game.tableGroup.tableMain.sum)
 
 
     def sendSum(self,game, sum):
         message = json.dumps(sum)
+        print(message)
         game.broadcast.sendto(message.encode('utf-8'), (game.targetIP, 10131))
 
 class Table(Group):
