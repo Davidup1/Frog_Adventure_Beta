@@ -21,14 +21,14 @@
   ],
   "init_dices": {
     "level_mode": [
-      ["ATTACK",0,""],
-      ["ATTACK",0,""],
-      ["ATTACK",0,""],
+      ["ATTACK",2,""],
+      ["ATTACK",2,""],
+      ["ATTACK",2,""],
       ["BOOST",0,""],
       ["BOOST",0,""],
       ["BOOST",0,""],
-      ["BLOCK",0,""],
-      ["BLOCK",0,""],
+      ["BLOCK",2,""],
+      ["BLOCK",2,""],
       ["HEAL",0,"CRYSTAL"]
     ]
   }

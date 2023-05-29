@@ -137,6 +137,10 @@ class TableMain(Sprite):
         game.player.balls['Heal'].num = self.sum["HEAL"]
         game.monsters[-1].balls['ATK'].num = self.sum["ATTACK"]
 
+    def clear_dice(self):
+        for dice in self.dice_list:
+            self.take_out_dice(dice)
+
 
 class TableBtn(Sprite):
     def __init__(self, img):

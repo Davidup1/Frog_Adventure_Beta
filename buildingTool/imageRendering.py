@@ -11,6 +11,7 @@ def image_rendering(game):
         table_rendering(game)
         bag_rendering(game)
         diceTable_rendering(game)
+        perk_rendering(game)
         info_rendering(game)
     elif game.status == "online":
         character_rendering(game)
@@ -67,7 +68,7 @@ def table_rendering(game):
 
 
 def info_rendering(game):
-    game.bag1.update_image()
+    game.bag1.update_image(game)
     if game.bag1.show_info or not game.bag1.info_animation.finish:
         game.screen.blit(game.bag1.info_image, game.bag1.info_rect)
 
@@ -83,7 +84,7 @@ def bag_rendering(game):
 
 def diceTable_rendering(game):
     game.diceTable.dice_group.draw(game.screen)
-    game.diceTable.update_icon()
+    game.diceTable.update_icon(game)
     pos_list = game.diceTable.icon_pos_list
     index = 0
     for icon in game.diceTable.icon_list:
@@ -95,3 +96,9 @@ def diceTable_rendering(game):
     rect.center = (264, 521)
     game.screen.blit(energy_text, rect)
 
+
+def perk_rendering(game):
+    if game.level_complete:
+        for perk in game.temp_perk:
+            perk.play()
+            game.screen.blit(perk.image,perk.rect.topleft)

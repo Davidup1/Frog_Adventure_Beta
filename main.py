@@ -1,5 +1,6 @@
 import pygame
 from buildingTool.gameInit import game_init
+from buildingTool.gameInit import level_init
 from buildingTool.imageRendering import image_rendering
 from buildingTool.gameCirculation import game_circulation
 from buildingTool.info import show_info
@@ -19,6 +20,7 @@ class Game:
         self.font = pygame.font.Font('./font/寒蝉点阵体.ttf', 23)
         self.game_frame_cnt = 0
         self.cur_level = None
+        self.level_complete = False
         self.delay = 0
         self.selfAction = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
         self.opponentAction = {"ATTACK": 0, "BLOCK": 0, "HEAL": 0}
@@ -62,6 +64,10 @@ class Game:
             edit1.insert("0.0", ErrorMessage)
             edit1.pack()
             root.mainloop()
+
+    def next_level(self):
+        self.level_complete = False
+        level_init(self)
 
 
 

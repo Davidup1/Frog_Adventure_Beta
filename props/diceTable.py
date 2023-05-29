@@ -38,7 +38,7 @@ class DiceTable:
         for i in range(len(self.dice_list)):
             self.dice_list[i].set_pos((pos[0]+78*i, pos[1]))
 
-    def update_icon(self):
+    def update_icon(self,game):
         index = 0
         self.icon_list = []
         self.icon_pos_list = []
@@ -51,7 +51,11 @@ class DiceTable:
         for i in self.dice_list:
             if i:
                 self.dice_remain += 1
-        self.energy = self.dice_remain-2
+        self.energy = 0 if game.level_complete else self.dice_remain-2
+
+    def clear_dice(self):
+        for dice in self.dice_group:
+            self.take_out_dice(dice)
 
     def take_out_dice(self, dice):
         self.dice_list.remove(dice)

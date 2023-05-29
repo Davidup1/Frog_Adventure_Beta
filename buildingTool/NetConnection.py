@@ -44,7 +44,7 @@ class NetConnection:
         print(self.cnt)
         self.cnt += 1
         if self.cnt == 10:
-            self.u.settimeout(10)
+            self.u.settimeout(1)
             try:
                 self.search()
             except:

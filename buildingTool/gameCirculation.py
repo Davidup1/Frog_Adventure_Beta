@@ -1,6 +1,7 @@
 import sys
 import pygame
 from random import randint
+from props.perk import gen_perk
 import socket
 from socket import *
 import threading
@@ -25,7 +26,11 @@ def game_circulation(game):
             game.mouse.update_button(True)
         elif event.type == pygame.MOUSEBUTTONUP:
             game.mouse.update_button(False)
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_a:
+                game.monsters[0].balls["HP"].death = True
     game.mouse.update_button()
+
     if game.status == "main":
         for button in game.mainPage:
             button.eventHandle()
@@ -44,17 +49,26 @@ def level_page(game):
         if monster.balls["HP"].death:
             game.monsters.remove(monster)
             game.monster_num = len(game.monsters)
+    if game.monster_num==0 and game.flag[0]=="monster" and not game.level_complete:# 战斗结束瞬间
+        game.diceTable.clear_dice()
+        game.tableGroup.tableMain.clear_dice()
+        game.bag1.dice_back()
+        game.temp_perk = gen_perk(game.perks)
+        for perk in game.temp_perk:
+            perk.landing()
     game.level_complete = game.monster_num==0 and game.flag[0]=="monster"
     if game.level_complete:  # 战斗结束
         choose_perk(game)
+        game.bag1.event_handle(game)
+        for dice in game.bag1.all_dices:
+            dice.eventHandle(game.mouse)
     else:  # 战斗未结束
         if game.roundFinish:  # 回合结束
             game.tableGroup.eventHandle(game)
             character_movement(game)
         else:  # 回合未结束
             game.tableGroup.eventHandle(game)
-            game.bag1.event_handle(game.mouse)
-            game.bag2.event_handle(game.mouse)
+            game.bag1.event_handle(game)
             for dice in game.bag1.all_dices:
                 dice.eventHandle(game.mouse)
             game.diceTable.eventHandle(game)
@@ -75,8 +89,7 @@ def online_page(game):
             character_movement(game)
         else:  # 回合未结束
             game.tableGroup.eventHandle(game)
-            game.bag1.event_handle(game.mouse)
-            game.bag2.event_handle(game.mouse)
+            game.bag1.event_handle(game)
             for dice in game.bag1.all_dices:
                 dice.eventHandle(game.mouse)
             game.diceTable.eventHandle(game)
@@ -95,7 +108,8 @@ def character_movement(game):
     if game.delay:
         game.delay -= 1
         game.player.play()
-        game.monsters[game.cur_monster].play()
+        if len(game.monsters):
+            game.monsters[game.cur_monster].play()
         if not game.delay:
             if game.flag == ["player", "attack"]:
                 if game.monsters[-1].get_point("ATK"):
@@ -103,17 +117,27 @@ def character_movement(game):
     else:
         if game.flag[0] == "player":
             if game.flag[1] == "attack":
-                if game.monsters[-1].get_point("ATK"):
-                    game.player.play()
-                    game.monsters[-1].play()
-                    if game.player.animation.curFrame == len(game.player.animation.animationList)-1:
-                        game.monsters[-1].hit()
-                    if game.player.animation.finish:
-                        game.monsters[-1].balls["ATK"].num = 0
-                        game.delay = 20
-                        game.flag[1] = "defence"
-                else:
-                    game.flag[1] = "defence"
+                try:
+                    if game.patch:
+                        game.patch -= 1
+                        game.player.play()
+                        if game.patch==0:
+                            game.flag[1] = "defence"
+                            game.delay = 20
+                    else:
+                        if game.monsters[-1].get_point("ATK"):
+                            game.player.play()
+                            game.monsters[-1].play()
+                            if game.player.animation.curFrame == len(game.player.animation.animationList)-1:
+                                game.monsters[-1].hit()
+                            if game.player.animation.finish:
+                                game.monsters[-1].balls["ATK"].num = 0
+                                game.delay = 20
+                                game.flag[1] = "defence"
+                        else:
+                            game.flag[1] = "defence"
+                except IndexError:
+                    game.patch = 10
             elif game.flag[1] == "defence":
                 if game.player.get_point("DEF"):
                     game.player.add_arm()
@@ -128,10 +152,11 @@ def character_movement(game):
                     game.player.jump()
                     game.delay = 20
                 game.flag = ["monster", "attack"]
-                game.attack_flag = 1
-                actions = game.monsters[game.cur_monster].action
-                game.cur_actionlist = actions[randint(0,len(actions)-1)]
-                game.cur_action = 0
+                if len(game.monsters):
+                    game.attack_flag = 1
+                    actions = game.monsters[game.cur_monster].action
+                    game.cur_actionlist = actions[randint(0,len(actions)-1)]
+                    game.cur_action = 0
         elif game.flag[0] == "monster":
             if game.status == "online":
                 # 写对手的动作
@@ -206,6 +231,8 @@ def character_movement(game):
 
 
 def choose_perk(game):
+    for perk in game.temp_perk:
+        perk.eventHandle(game)
     pass
 
 def win_online(game):

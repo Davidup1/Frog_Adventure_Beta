@@ -16,6 +16,7 @@ from props.dice import Dice
 from props.pointCard import PointCard
 from props.button import Button
 from props.ball import Ball
+from props.perk import *
 from random import randint
 
 import threading
@@ -49,7 +50,9 @@ def game_init(game):
     game.bags.add(game.bag1)
     game.bags.add(game.bag2)
     game.diceTable = DiceTable(img["diceTable"])
-    game.level_complete = False
+    game.perks = init_perks(img["UI"]["perk"])
+    game.temp_perk = []
+    game.patch = 0
 
 
     game.testDice.bind(game.bag1, game.tableGroup.tableMain, game.diceTable)
@@ -119,7 +122,7 @@ def level_init(game, mode="none"):
     game.monsters = []
     level_data = game.level_data['level_stage'][str(game.cur_level//5)]
     level_pos = game.level_data['level_pos']
-    monster_num = 2# randint(level_data['monster_min'], level_data['monster_max'])  # 生成当前关卡怪物总数
+    monster_num = randint(level_data['monster_min'], level_data['monster_max'])  # 生成当前关卡怪物总数
     print(level_pos[monster_num - 1])
     monster_weight = level_data['monster_weight']
     # 生成当前关卡怪物
@@ -142,6 +145,8 @@ def level_init(game, mode="none"):
     game.flag = ["",""] # 控制角色动作流程
     game.monster_num = len(game.monsters)
     game.cur_monster = -1
+    if game.cur_level>1:
+        game.tableGroup.back()
 
 
 def online_init(game, mode):

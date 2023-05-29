@@ -95,6 +95,11 @@ class Dice(Sprite):
         self.point = self.pointList[self.pointIndex]
         self.update_image()
 
+    def set_point(self,index):
+        self.pointIndex = index
+        self.point = self.pointList[index]
+        self.update_image()
+
     def onMouseHover(self, mouse):
         hover = pygame.sprite.collide_rect(mouse, self)
         if hover:
