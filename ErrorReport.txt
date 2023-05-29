@@ -186,6 +186,50 @@ AttributeError: 'Game' object has no attribute 'onlineListen'
 
 
 
+============Tue May 30 01:25:03 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 36, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 110, in online
+    online_init(game, "online")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 160, in online_init
+    select_Server(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 202, in select_Server
+    data, address = game.listener.recvfrom(1024)
+socket.timeout: timed out
+
+
+
+
+============Tue May 30 01:25:16 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 36, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 36, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 110, in online
+    online_init(game, "online")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 160, in online_init
+    select_Server(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 202, in select_Server
+    data, address = game.listener.recvfrom(1024)
+socket.timeout: timed out
+
+
+
+
 ============Tue May 30 01:25:02 2023============
 
 Traceback (most recent call last):

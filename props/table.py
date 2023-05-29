@@ -173,8 +173,7 @@ class TableBtn(Sprite):
     def onClick(self, click, game):
         if self.mouseHover and click:
             game.roundFinish = True
-            game.tableGroup.tableMain.animation.quadratic(50, (1, 16), 7)
-            self.animation.quadratic(50, (1, 16), 7)
+            self.pack_up(game)
             game.delay = 60
             game.flag = ["player","attack"]
             for dice in game.bag1.all_dices:
@@ -185,6 +184,9 @@ class TableBtn(Sprite):
             if game.status == "online":
                 self.sendSum(game,game.tableGroup.tableMain.sum)
 
+    def pack_up(self,game):
+        game.tableGroup.tableMain.animation.quadratic(50, (1, 16), 7)
+        self.animation.quadratic(50, (1, 16), 7)
 
     def sendSum(self,game, sum):
         message = json.dumps(sum)

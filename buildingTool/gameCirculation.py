@@ -29,6 +29,8 @@ def game_circulation(game):
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 game.monsters[0].balls["HP"].death = True
+            elif event.key == pygame.K_b:
+                game.monsters[0].balls["HP"].death = True
     game.mouse.update_button()
 
     if game.status == "main":

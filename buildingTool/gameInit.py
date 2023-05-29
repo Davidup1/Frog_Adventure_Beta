@@ -18,7 +18,6 @@ from props.button import Button
 from props.ball import Ball
 from props.perk import *
 from random import randint
-
 import threading
 from socket import *
 from traceback import format_exc
@@ -163,7 +162,6 @@ def online_init(game, mode):
         game.cur_level = 1
     else:
         game.cur_level += 1
-    game.roundFinish = False
     game.player.init_ball()
     level_pos = game.level_data['level_pos']
     game.monsters = [game.characters["frog_online"].copy()]
@@ -173,6 +171,9 @@ def online_init(game, mode):
     game.flag = ["", ""]
     game.cur_monster = 0
     round_init(game)
+    game.roundFinish = False if game.onlineLeader else True
+    if game.roundFinish:
+        game.tableGroup.tableBtn.pack_up(game)
 
 
 def online_edge_init(game):
@@ -206,12 +207,11 @@ def select_Server(game):
                 print(tmp)
                 if int(tmp) > game.search_win.cnt:
                     game.onlineLeader = False
+            game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
             break
         except Exception:
-            pass
+            print(format_exc())
     pass
 
 def round_init(game):
     game.diceTable.round_init(game.bag1)
-    if game.status == "online":
-        game.roundFinish = False if game.onlineLeader else True

@@ -1,5 +1,6 @@
 from socket import *
 import tkinter
+import time
 
 class NetConnection:
     def __init__(self):
@@ -60,7 +61,7 @@ class NetConnection:
             data, address = self.u.recvfrom(1024)
             if data == b"This is broadcase message from lyj !" and address[0]!= self.IP:
                 self.targetIP = address[0]
-                print(self.targetIP)
+                print(self.targetIP,time.time())
                 break
         self.page.destroy()
 
