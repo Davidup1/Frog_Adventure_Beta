@@ -16,7 +16,8 @@ class Game:
         pygame.display.set_caption("蛙蛙勇闯地牢")
         self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode((960, 539))
-
+        pygame.mixer.music.load('./music/bg_music.mp3')
+        pygame.mixer.music.play(-1)
         self.font = pygame.font.Font('./font/寒蝉点阵体.ttf', 23)
         self.game_frame_cnt = 0
         self.cur_level = None

@@ -184,9 +184,16 @@ class TableBtn(Sprite):
                 self.sendSum(game,game.tableGroup.tableMain.sum)
             game.roundFinish = True
 
-    def pack_up(self,game):
-        game.tableGroup.tableMain.animation.quadratic(50, (1, 16), 7)
+    def pack_up(self,game,skip=False):
+        main = game.tableGroup.tableMain.animation
+        main.quadratic(50, (1, 16), 7)
         self.animation.quadratic(50, (1, 16), 7)
+        if skip:
+            main.finish = True
+            main.curFrame = len(main.animationList)-1
+            self.animation.finish = True
+            self.animation.curFrame = len(self.animation.animationList)-1
+
 
     def sendSum(self,game, sum):
         message = json.dumps(sum)

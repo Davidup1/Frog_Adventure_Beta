@@ -33,9 +33,14 @@ def game_circulation(game):
             elif event.key == pygame.K_b:
                 game.cur_level += 3
             elif event.key == pygame.K_ESCAPE:
-                game.status = "main"
                 game.threadControl = False
-                game.onlineListen.join()
+                if game.status == "online":
+                    game.onlineListen.join()
+                elif game.status == "level":
+                    btn = game.tableGroup.tableBtn.animation
+                    if btn.curFrame==len(btn.animationList)-1:
+                        game.tableGroup.tableBtn.pack_up(game,True)
+                game.status = "main"
     game.mouse.update_button()
 
     if game.status == "main":
@@ -85,8 +90,8 @@ def level_page(game):
                 game.tableGroup.tableMain.calculate(game)
 
 def online_page(game):
-    is_win = game.monsters[-1].balls["HP"].num == 0
-    game.level_complete = is_win or game.player.balls["HP"].num==0
+    is_win = game.monsters[-1].balls["HP"].num <= 0
+    game.level_complete = is_win or game.player.balls["HP"].num<=0
 
     if game.level_complete:  # 战斗结束
         win_online(game,is_win)

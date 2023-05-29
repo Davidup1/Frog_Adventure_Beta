@@ -38,7 +38,6 @@ def game_init(game):
     game.bg = background_init(img['bg'])  # bg目录，内含bg和bg_fire
     game.ball = Ball(img_dict=img["ball"], font=game.font)
     game.characters = character_init(data['character'], img['character'])
-    game.player = game.characters['frog'].copy(True)
     game.pointCard = PointCard(img["ball"]["point_card"], game.font)
     game.tableGroup = Table([img["table"]["table_main"], img["table"]["table_finish_button"]], game.pointCard)
     game.testDice = Dice(img_dict=img["dice"])  # 初始化骰子的图像到类里
@@ -53,6 +52,7 @@ def game_init(game):
     game.temp_perk = []
     game.search_win = NetConnection()
     game.patch = 0
+    game.tableGroup.tableBtn.pack_up(game,True)
 
 
     game.testDice.bind(game.bag1, game.tableGroup.tableMain, game.diceTable)
@@ -99,7 +99,7 @@ def main_page_init(game,img):
     pos = (479,178)
     for index in range(3):
         i = button_list[index]
-        game.mainPage.add(Button(img["UI"]["main"][i],(pos[0],pos[1]+60*index),func_list[index],game))
+        game.mainPage.add(Button(img["UI"]["main"][i],(pos[0],pos[1]+70*index),func_list[index],game))
 
 def level(game):
     game.status = "level"
@@ -118,6 +118,7 @@ def level_init(game, mode="none"):
     else:
         game.cur_level += 1
     game.roundFinish = False
+    game.player = game.characters["frog"].copy(True)
     game.player.init_ball()
     game.monsters = []
     level_data = game.level_data['level_stage'][str(game.cur_level//3)]
@@ -145,8 +146,7 @@ def level_init(game, mode="none"):
     game.flag = ["",""] # 控制角色动作流程
     game.monster_num = len(game.monsters)
     game.cur_monster = -1
-    if game.cur_level>1:
-        game.tableGroup.back()
+    game.tableGroup.back()
 
 
 def online_init(game, mode):
@@ -165,6 +165,7 @@ def online_init(game, mode):
         game.cur_level = 1
     else:
         game.cur_level += 1
+    game.player = game.characters["frog"].copy(True)
     game.player.init_ball()
     level_pos = game.level_data['level_pos']
     game.monsters = [game.characters["frog_online"].copy()]
