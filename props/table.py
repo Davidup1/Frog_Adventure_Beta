@@ -162,6 +162,7 @@ class TableBtn(Sprite):
         pos = self.animation.play(self.init_rect)
         if pos:
             self.rect.topleft = pos
+            print(self.animation.curFrame)
 
     def onMouseHover(self, hover):
         if hover and not self.mouseHover:  # 鼠标在btn上
@@ -189,9 +190,7 @@ class TableBtn(Sprite):
         main.quadratic(50, (1, 16), 7)
         self.animation.quadratic(50, (1, 16), 7)
         if skip:
-            main.finish = True
             main.curFrame = len(main.animationList)-1
-            self.animation.finish = True
             self.animation.curFrame = len(self.animation.animationList)-1
 
 

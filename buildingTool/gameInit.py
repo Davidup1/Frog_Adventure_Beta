@@ -52,7 +52,6 @@ def game_init(game):
     game.temp_perk = []
     game.search_win = NetConnection()
     game.patch = 0
-    game.tableGroup.tableBtn.pack_up(game,True)
 
 
     game.testDice.bind(game.bag1, game.tableGroup.tableMain, game.diceTable)
@@ -115,11 +114,11 @@ def settings(game):
 def level_init(game, mode="none"):
     if mode == "init":
         game.cur_level = 1
+        game.player = game.characters["frog"].copy(True)
+        game.player.init_ball()
     else:
         game.cur_level += 1
     game.roundFinish = False
-    game.player = game.characters["frog"].copy(True)
-    game.player.init_ball()
     game.monsters = []
     level_data = game.level_data['level_stage'][str(game.cur_level//3)]
     level_pos = game.level_data['level_pos']
@@ -146,6 +145,7 @@ def level_init(game, mode="none"):
     game.flag = ["",""] # 控制角色动作流程
     game.monster_num = len(game.monsters)
     game.cur_monster = -1
+    game.tableGroup.tableBtn.pack_up(game, True)
     game.tableGroup.back()
 
 

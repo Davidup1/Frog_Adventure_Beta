@@ -116,9 +116,9 @@ class Animation:
         self.is_init = False
         self.finish = False
 
-    def backward(self):
+    def backward(self,direction=0):
         self.circulationCount = self.circulationNum
-        self.next = -self.next
+        self.next = direction if direction else -self.next
         self.end = self.duration - 1 if self.next == 1 else 0
         self.finish = False
 
