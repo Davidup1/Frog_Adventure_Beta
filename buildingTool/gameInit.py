@@ -42,7 +42,6 @@ def game_init(game):
     game.tableGroup = Table([img["table"]["table_main"], img["table"]["table_finish_button"]], game.pointCard)
     game.testDice = Dice(img_dict=img["dice"])  # 初始化骰子的图像到类里
     game.bag1 = Bag(0, img["bag"])
-    game.bag1.init_dices(game.level_data["init_dices"]["level_mode"])
     game.bag2 = Bag(1)
     game.bags = Group()
     game.bags.add(game.bag1)
@@ -115,6 +114,7 @@ def level_init(game, mode="none"):
     if mode == "init":
         game.cur_level = 1
         game.player = game.characters["frog"].copy(True)
+        game.bag1.init_dices(game.level_data["init_dices"]["level_mode"])
         game.player.init_ball()
     else:
         game.cur_level += 1
@@ -150,6 +150,7 @@ def level_init(game, mode="none"):
 
 
 def online_init(game, mode):
+    game.bag1.init_dices(game.level_data["init_dices"]["level_mode"])
     game.onlineClicked = True
     game.threadControl = True
     game.onlineLeader = True

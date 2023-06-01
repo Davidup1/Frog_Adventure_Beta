@@ -2,6 +2,7 @@ import sys
 import pygame
 from random import randint
 from props.perk import gen_perk
+from props.perk import Perk
 import tkinter as tk
 import socket
 from socket import *
@@ -32,7 +33,10 @@ def game_circulation(game):
                 game.monsters[0].balls["HP"].death = True
             elif event.key == pygame.K_b:
                 game.cur_level += 3
+            elif event.key == pygame.K_c:
+                game.show_detail = not game.show_detail
             elif event.key == pygame.K_ESCAPE:
+                game.diceTable.clear_dice()
                 game.threadControl = False
                 if game.status == "online":
                     game.broadcast.sendto(b"My suitcase is moved, i don't play", (game.targetIP, 10131))
@@ -64,6 +68,7 @@ def level_page(game):
         game.diceTable.clear_dice()
         game.tableGroup.tableMain.clear_dice()
         game.bag1.dice_back()
+        Perk.is_selected = False
         game.temp_perk = gen_perk(game.perks)
         for perk in game.temp_perk:
             perk.landing()

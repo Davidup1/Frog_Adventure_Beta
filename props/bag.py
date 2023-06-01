@@ -41,6 +41,9 @@ class Bag(Sprite):
 
 
     def init_dices(self, data):
+        self.all_dices = Group()
+        self.dice_list = []
+        self.diceGroup = Group()
         for i in data:
             dice = Dice(i[0], i[1], i[2])
             dice.set_point(5)

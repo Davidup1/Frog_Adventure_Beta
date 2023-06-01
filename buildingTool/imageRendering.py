@@ -1,4 +1,4 @@
-
+from props.perk import Perk
 
 
 def image_rendering(game):
@@ -98,7 +98,7 @@ def diceTable_rendering(game):
 
 
 def perk_rendering(game):
-    if game.level_complete:
+    if game.level_complete and not Perk.is_selected:
         for perk in game.temp_perk:
             perk.play()
             game.screen.blit(perk.image,perk.rect.topleft)

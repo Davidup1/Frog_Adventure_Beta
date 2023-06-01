@@ -5,6 +5,8 @@ from random import randint
 
 
 class Perk(Sprite):
+    is_selected = False
+
     def __init__(self,name,image):
         super(Perk, self).__init__()
         print(name)
@@ -56,6 +58,7 @@ class Perk(Sprite):
                 removeDice(game)
             elif self.name == "upgradeDice":
                 upgradeDice(game)
+            Perk.is_selected = True
 
     def eventHandle(self,game):
         self.onMouseHover(game)
@@ -82,6 +85,7 @@ def gen_perk(perks):
 
 
 def healOrAddMaxHP(game):
+    print("healOrAddMaxHP")
     HP = game.player.balls["HP"]
     if HP.num == HP.MaxHP:
         HP.MaxHP += 3
@@ -90,7 +94,7 @@ def healOrAddMaxHP(game):
 
 
 def getNewDice(game):
-
+    print("getNewDice")
     pass
 
 

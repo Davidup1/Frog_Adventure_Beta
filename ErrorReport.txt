@@ -538,3 +538,157 @@ socket.gaierror: [Errno 11001] getaddrinfo failed
 
 
 
+============Wed May 31 23:31:43 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 37, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 42, in game_circulation
+    game.broadcast.sendto(b"My suitcase is moved, i don't play",(game.targetIP, 10131))
+AttributeError: 'Game' object has no attribute 'broadcast'
+
+
+
+
+============Wed May 31 23:36:48 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 37, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 43, in game_circulation
+    game.bag1.clear_dice()
+AttributeError: 'Bag' object has no attribute 'clear_dice'
+
+
+
+
+============Thu Jun  1 00:02:22 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 37, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 51, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 106, in level
+    level_init(game, "init")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 149, in level_init
+    game.tableGroup.back(-1)
+TypeError: back() takes 1 positional argument but 2 were given
+
+
+
+
+============Thu Jun  1 00:06:55 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 37, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 51, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 110, in online
+    online_init(game, "online")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 160, in online_init
+    select_Server(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 213, in select_Server
+    game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+
+
+
+============Thu Jun  1 00:14:43 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 37, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 51, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 81, in level_page
+    character_movement(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 265, in character_movement
+    game.tableGroup.back()
+TypeError: back() missing 1 required positional argument: 'direction'
+
+
+
+
+============Thu Jun  1 00:15:30 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 37, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 47, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 105, in level
+    level_init(game, "init")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 149, in level_init
+    game.tableGroup.back(-1)
+TypeError: back() takes 1 positional argument but 2 were given
+
+
+
+
+============Thu Jun  1 00:16:11 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 37, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 47, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 109, in online
+    online_init(game, "online")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 160, in online_init
+    select_Server(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 213, in select_Server
+    game.broadcast.sendto(json.dumps(str(game.search_win.cnt)).encode('utf-8'), (game.targetIP, 10131))
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+
+
+
+============Thu Jun  1 09:57:40 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 38, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 50, in game_circulation
+    button.eventHandle()
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 35, in eventHandle
+    self.onClick(self.game.mouse)
+  File "D:\Python环境\Frog_Adventure\props\button.py", line 31, in onClick
+    self.func(self.game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 104, in level
+    level_init(game, "init")
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 143, in level_init
+    round_init(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameInit.py", line 230, in round_init
+    game.diceTable.round_init(game.bag1)
+  File "D:\Python环境\Frog_Adventure\props\diceTable.py", line 30, in round_init
+    dice = bag.take_out_dice()
+  File "D:\Python环境\Frog_Adventure\props\bag.py", line 90, in take_out_dice
+    index = randint(0, self.remain - 1)
+  File "D:\Anaconda\lib\random.py", line 248, in randint
+    return self.randrange(a, b+1)
+  File "D:\Anaconda\lib\random.py", line 226, in randrange
+    raise ValueError("empty range for randrange() (%d, %d, %d)" % (istart, istop, width))
+ValueError: empty range for randrange() (0, 0, 0)
+
+
+
+

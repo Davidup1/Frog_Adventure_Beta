@@ -20,6 +20,7 @@ class Game:
         pygame.mixer.music.play(-1)
         self.font = pygame.font.Font('./font/寒蝉点阵体.ttf', 23)
         self.game_frame_cnt = 0
+        self.show_detail = False
         self.cur_level = None
         self.level_complete = False
         self.delay = 0
