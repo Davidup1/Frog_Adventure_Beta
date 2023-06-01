@@ -692,3 +692,31 @@ ValueError: empty range for randrange() (0, 0, 0)
 
 
 
+============Thu Jun  1 10:05:39 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 38, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 33, in game_circulation
+    game.monsters[0].balls["HP"].death = True
+AttributeError: 'Game' object has no attribute 'monsters'
+
+
+
+
+============Thu Jun  1 11:13:36 2023============
+
+Traceback (most recent call last):
+  File "D:/Python环境/Frog_Adventure/main.py", line 38, in __init__
+    game_circulation(self)  # 游戏内部循环中的事件处理
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 55, in game_circulation
+    level_page(game)
+  File "D:\Python环境\Frog_Adventure\buildingTool\gameCirculation.py", line 94, in level_page
+    game.tableGroup.tableMain.calculate(game)
+  File "D:\Python环境\Frog_Adventure\props\table.py", line 138, in calculate
+    game.monsters[-1].balls['ATK'].num = self.sum["ATTACK"]
+IndexError: list index out of range
+
+
+
+

@@ -29,9 +29,9 @@ def game_circulation(game):
         elif event.type == pygame.MOUSEBUTTONUP:
             game.mouse.update_button(False)
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
+            if event.key == pygame.K_a and (game.status == "level") and len(game.monsters)>1:
                 game.monsters[0].balls["HP"].death = True
-            elif event.key == pygame.K_b:
+            elif event.key == pygame.K_b and game.status == "level":
                 game.cur_level += 3
             elif event.key == pygame.K_c:
                 game.show_detail = not game.show_detail
